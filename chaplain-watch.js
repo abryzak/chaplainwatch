@@ -7,9 +7,15 @@
 */
 
 if (Meteor.isClient) {
+  var test = ko.observable("Testing dynamic Text");
+  var viewModel = {
+    "test": test,
+  };
+  /*
   Template.hello.greeting = function () {
     return "Welcome to chaplain-watch.";
   };
+
 
   Template.hello.events({
     'click input' : function () {
@@ -18,6 +24,9 @@ if (Meteor.isClient) {
         console.log("You pressed the button");
     }
   });
+  */
+  Meteor.startup( function() { ko.applyBindings(viewModel); } );
+  //https://github.com/steveluscher/knockout.meteor/blob/master/examples/dynamic_finders/example.js
 }
 
 if (Meteor.isServer) {

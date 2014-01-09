@@ -7,6 +7,9 @@
       },
       "font-awesome": {
         "version": "4.0.3"
+      },
+      "knockout": {
+        "version": "0.3.0"
       }
     },
     "packages": {
@@ -19,6 +22,11 @@
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
         "tag": "v4.0.3",
         "commit": "61e9361384347547ae144f8228faa4deffda23db"
+      },
+      "knockout": {
+        "git": "https://github.com/bevanhunt/meteor-knockout.git",
+        "tag": "v0.3.0",
+        "commit": "47d046d3710c78e94ee3ffddc7d1d6d385b1524b"
       }
     }
   }
