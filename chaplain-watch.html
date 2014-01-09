@@ -3,11 +3,230 @@
 </head>
 
 <body>
-  {{> hello}}
+	<div class="jumbotron">
+		<h1>ChaplainWatch App v3</h1>
+		<p>This is a visual proof of concept, there is no functionality in this form, this is simply to preview what all the fields will look like.</p>
+	</div>
+  <div class="container">
+  	{{> intervention}}
+  </div>
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="intervention">
+	<section id="launch-pad" class="panel panel-default">
+		<div class="panel-heading"><h2>Launch Pad</h2></div>
+		<div class="panel-body">
+			<div class="form-horizontal" role="form">
+			  <div class="form-group">
+			    <label for="date" class="col-sm-4 control-label">Date</label>
+			    <div class="col-sm-6">
+			      <input type="date" class="form-control input-lg" id="date" placeholder="Start Date">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="time" class="col-sm-4 control-label">Time</label>
+			    <div class="col-sm-6">
+			      <input type="time" class="form-control input-lg" id="time" placeholder="Start Time">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="responding-to" class="col-sm-4 control-label">Responding To</label>
+			    <div class="col-sm-6">
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    None
+						  </label>
+						</div>
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    NightSafe
+						  </label>
+						</div>
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    City Safe
+						  </label>
+						</div>
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    Venue
+						  </label>
+						</div>
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    Police
+						  </label>
+						</div>
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    Taxi
+						  </label>
+						</div>
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    Ambulance
+						  </label>
+						</div>
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    Public
+						  </label>
+						</div>
+						<div class="checkbox">
+						  <label>
+						    <input type="checkbox" name="responding-to" id="responding-to" value="" checked>
+						    Other
+						  </label>
+						</div>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="liquor-accord-precinct" class="col-sm-4 control-label">Liquor Accord Precinct</label>
+			    <div class="col-sm-6">
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="none" checked>
+						    Valley
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="nightsafe" checked>
+						    Caxton Street
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="none" checked>
+						    West End
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="none" checked>
+						    Other
+						  </label>
+						</div>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			  	<label for="event-location" class="col-sm-4 control-label">Event Location</label>
+			  	<div class="col-sm-6">
+			  		<textarea class="form-control" rows="4"></textarea>
+			  	</div>
+			  </div>
+			  <div class="form-group">
+			    <label for="intervention-type" class="col-sm-4 control-label">Intervention Type</label>
+			    <div class="col-sm-6">
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="none" checked>
+						    <i class="fa fa-medkit fa-fw"></i> First Aid
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="nightsafe" checked>
+						    <i class="fa fa-group fa-fw"></i> Diversion
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="none" checked>
+						    <i class="fa fa-smile-o fa-fw"></i> Support
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="none" checked>
+						    <i class="fa fa-comment fa-fw"></i> Advice
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="none" checked>
+						    <i class="fa fa-question-circle fa-fw"></i> Gone on Arrival / Non-Service
+						  </label>
+						</div>
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="liquor-accord-precinct" id="liquor-accord-precinct" value="none" checked>
+						    <i class="fa fa-road fa-fw"></i> Transport
+						  </label>
+						</div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</section>
+	<section id="people" class="panel panel-default">
+		<div class="panel-heading"><h2>People</h2></div>
+		<div class="panel-body">
+			<div class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="person-name" class="col-sm-4 control-label">Name or Identifier</label>
+					<div class="col-sm-6">
+						<input id="person-name" class="form-control input-lg" placeholder="Name or Identifier">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="person-name" class="col-sm-4 control-label">Gender</label>
+					<div class="col-sm-6">
+						<label class="radio-inline">
+						  <input type="radio" id="gender" value="male"> Male
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" id="gender" value="male"> Female
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="person-name" class="col-sm-4 control-label">Age Bracket</label>
+					<div class="col-sm-6">
+							<label class="radio-inline">
+							  <input type="radio" id="gender" value="male"> -17
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" id="gender" value="male"> 18-21
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" id="gender" value="male"> 22-25
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" id="gender" value="male"> 26-29
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" id="gender" value="male"> 30-34
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" id="gender" value="male"> 35-39
+							</label>
+							<label class="radio-inline">
+							  <input type="radio" id="gender" value="male"> 40+
+							</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="landing-pad" class="panel panel-default">
+		<div class="panel-heading"><h2>Landing Pad</h2></div>
+		<div class="panel-body">
+			<div class="form-horizontal" role="form">
+				<div class="form-group">
+			    <div class="col-sm-offset-4 col-sm-4">
+			      <button type="submit" class="btn btn-primary btn-lg btn-block">Complete</button>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</section>
 </template>

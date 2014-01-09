@@ -1,1 +1,19 @@
 /* CSS declarations go here */
+.control-label {
+	font-size: 16pt;
+}
+.checkbox label {
+	font-size: 16pt;	
+}
+.radio-inline {
+	font-size: 16pt;
+}
+.radio label {
+	font-size: 16pt;	
+}
+.form-group {
+	margin-bottom: 35px;
+}
+textarea {
+	resize: vertical;
+}
