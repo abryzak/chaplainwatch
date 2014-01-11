@@ -1,15 +1,13 @@
 /* CSS declarations go here */
-.control-label {
+input[type=date],input[type=time] {
+	-webkit-appearance: none;
+  -moz-appearance: none;
+}
+.control-label,.checkbox,.radio-inline,.radio label {
 	font-size: 16pt;
 }
-.checkbox label {
-	font-size: 16pt;	
-}
-.radio-inline {
-	font-size: 16pt;
-}
-.radio label {
-	font-size: 16pt;	
+.list-group-item.option {
+	font-size:18px;
 }
 .form-group {
 	margin-bottom: 35px;
