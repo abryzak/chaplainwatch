@@ -7,6 +7,13 @@
 */
 
 if (Meteor.isClient) {
+  ko.validation.configure({//Cut & paste - see what these do
+      registerExtenders: true,
+      messagesOnModified: true,
+      insertMessages: true,
+      parseInputAttributes: true,
+      messageTemplate: null
+  });
   var Option = function(category, value, name, html) {
     var self = this;
     self.value = value;
@@ -43,8 +50,8 @@ if (Meteor.isClient) {
     self.test = ko.observable("Testing dynamic Text");
 
     //launchpad fields
-    self.respondingTo = ko.observableArray().extend({required: true});
-    self.liquorAccordPrecinct = ko.observable().extend({required: true});
+    self.respondingTo = ko.observableArray().extend({ required: true });
+    self.liquorAccordPrecinct = ko.observable().extend({ required: true });
     self.locationLatitude = ko.observable();
     self.locationLongitude = ko.observable();
     self.locationError = ko.observable();
@@ -85,6 +92,7 @@ if (Meteor.isClient) {
   );
   Meteor.startup( function() { ko.applyBindings(currentViewModel); } );
   //https://github.com/steveluscher/knockout.meteor/blob/master/examples/dynamic_finders/example.js
+  //console.. ko.dataFor(document.body) (gets the viewModel)
 }
 
 if (Meteor.isServer) {

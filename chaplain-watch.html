@@ -1,6 +1,6 @@
 <head>
   <title>ChaplainWatch</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
 <body>
@@ -33,8 +33,8 @@
 			      <input type="time" class="form-control input-lg" id="time">
 			    </div>
 			  </div>
-			  <div class="form-group has-success">
-			  	<label for="" class="col-sm-4 control-label">Responding To <sup><i class="fa fa-check fa-fw"></i></sup></label>
+			  <div class="form-group" data-bind="css: {'has-success': respondingTo.isValid()}">
+			  	<label for="" class="col-sm-4 control-label">Responding To <sup><i class="fa fa-fw" data-bind="css: {'fa-check': respondingTo.isValid(), 'fa-asterisk': ! respondingTo.isValid()}"></i></sup></label>
 			  	<div class="col-sm-4">
 			  		<ul class="list-group" data-bind="foreach: _.where(options,{category:'respondingTo'})">
 			  			<li class="list-group-item option" data-bind="click: $parent.selectOption, css: {'text-info': $parent.respondingTo.indexOf(value) > -1, 'text-default': $parent.respondingTo.indexOf(value) == -1}">
