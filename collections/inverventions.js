@@ -1,0 +1,1 @@
+Interventions = new Meteor.Collection("interventions");

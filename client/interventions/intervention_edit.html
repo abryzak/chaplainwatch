@@ -1,0 +1,219 @@
+<template name="interventionEdit">
+	<section id="launch-pad" class="panel panel-success">
+		<div class="panel-heading">
+			<h2>Launch Pad <span class="pull-right"><i class="fa fa-check"></i></span></h2>
+		</div>
+		<div class="panel-body">
+			<div class="form-horizontal" role="form">
+			  <div class="form-group has-success">
+			    <label for="date" class="col-sm-4 control-label">Date <sup><i class="fa fa-check fa-fw"></i></sup></label>
+			    <div class="col-sm-6">
+			      <input type="date" class="form-control input-lg" id="date" value="2014-01-23">
+			    </div>
+			  </div>
+			  <div class="form-group has-error">
+			    <label for="time" class="col-sm-4 control-label">Time <sup><i class="fa fa-asterisk fa-fw"></i></sup></label>
+			    <div class="col-sm-6">
+			      <input type="time" class="form-control input-lg" id="time">
+			    </div>
+			  </div>
+			  <div class="form-group" data-bind="css: {'has-success': respondingTo.isValid()}">
+			  	<label for="" class="col-sm-4 control-label">Responding To <sup><i class="fa fa-fw" data-bind="css: {'fa-check': respondingTo.isValid(), 'fa-asterisk': ! respondingTo.isValid()}"></i></sup></label>
+			  	<div class="col-sm-4">
+			  		<ul class="list-group" data-bind="foreach: _.where(options,{category:'respondingTo'})">
+			  			<li class="list-group-item option" data-bind="click: $parent.selectOption, css: {'text-info': $parent.respondingTo.indexOf(value) > -1, 'text-default': $parent.respondingTo.indexOf(value) == -1}">
+			  				<i class="fa fa-lg fa-fw" data-bind="css: {'fa-check-square-o': $parent.respondingTo.indexOf(value) > -1, 'fa-square-o': $parent.respondingTo.indexOf(value) == -1}"></i>
+			  				<span data-bind="text:text"></span>
+			  			</li>
+			  		</ul>
+			  	</div>
+			  </div>
+			  <div class="form-group has-success">
+			  	<label for="" class="col-sm-4 control-label">Liquor Accord Precinct <sup><i class="fa fa-check fa-fw"></i></sup></label>
+			  	<div class="col-sm-4">
+			  		<ul class="list-group" data-bind="foreach: _.where(options,{category:'liquorAccordPrecinct'})">
+			  			<li class="list-group-item option" data-bind="click: $parent.selectOption, css: {'text-info': $parent.liquorAccordPrecinct() == value, 'text-default': $parent.liquorAccordPrecinct() != value}">
+			  				<i class="fa fa-lg" data-bind="css: {'fa-bullseye': $parent.liquorAccordPrecinct() == value, 'fa-circle-o': $parent.liquorAccordPrecinct() != value}"></i>
+			  				<span data-bind="text:text"></span>
+			  			</li>
+			  		</ul>
+			  	</div>
+			  </div>
+			  <div class="form-group">
+			  	<label for="event-location" class="col-sm-4 control-label">Intervention Location</label>
+			  	<div class="col-sm-6">
+			  		<textarea class="form-control input-lg" rows="4" placeholder="Intervention Location"></textarea>
+			  		<span class="help-block" data-bind="if: locationLatitude() && locationLongitude()">
+			  			<strong><i class="fa fa-globe"></i></strong> Lat: <span data-bind="text: locationLatitude"></span> Long: <span data-bind="text: locationLongitude"></span>
+			  		</span>
+			  		<span class="help-block" data-bind="if: (! (locationLatitude() && locationLongitude())) && (! locationError())">
+			  			<strong><i class="fa fa-globe fa-spin"></i> Finding Location</strong>
+			  		</span>
+			  		<span class="help-block" data-bind="if: (! (locationLatitude() && locationLongitude())) && (locationError())">
+			  			<strong>Location could not be found</strong> <span data-bind:"text: locationError"></span>
+			  		</span>
+			  	</div>
+			  </div>
+			  <div class="form-group">
+			  	<label for="" class="col-sm-4 control-label">Intervention Type <sup><i class="fa fa-asterisk"></i></sup></label>
+			  	<div class="col-sm-4">
+			  		<ul class="list-group">
+							<li class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <i class="fa fa-medkit fa-fw"></i> First Aid</li>
+							<li class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <i class="fa fa-group fa-fw"></i> Diversion</li>
+							<li class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <i class="fa fa-smile-o fa-fw"></i> Support</li>
+							<li class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <i class="fa fa-comment fa-fw"></i> Advice</li>
+							<li class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <i class="fa fa-question-circle fa-fw"></i> GoA / Non-Service</li>
+							<li class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <i class="fa fa-truck fa-fw"></i> Transport</li>
+						</ul>
+			  	</div>
+			  </div>
+			</div>
+		</div>
+	</section>
+	<section id="people" class="panel panel-default">
+		<div class="panel-heading"><h2>People <small>3 Total</small></h2></div>
+		<div class="panel-body">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h3>Person 1 of X</h3></div>
+				<div class="panel-body">
+					<div class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="person-name" class="col-sm-4 control-label">Name or Identifier <sup><i class="fa fa-asterisk"></i></sup></label>
+							<div class="col-sm-6">
+								<input id="person-name" class="form-control input-lg" placeholder="Name or Identifier">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="person-name" class="col-sm-4 control-label">Gender <sup><i class="fa fa-asterisk"></i></sup></label>
+							<div class="col-sm-8">
+								<div class="row">
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option">
+											<i class="fa fa-lg fa-circle-o"></i> <i class="fa fa-male fa-fw"></i> Male
+										</div>
+									</div>
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option">
+											<i class="fa fa-lg fa-circle-o"></i> <i class="fa fa-female fa-fw"></i> Female
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="person-name" class="col-sm-4 control-label">Age Bracket <sup><i class="fa fa-asterisk"></i></sup></label>
+							<div class="col-sm-6">
+								<div class="row">
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <small>-17<small></div>										
+									</div>
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <small>18-2<small>1</div>										
+									</div>
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <small>22-2<small>5</div>										
+									</div>
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <small>26-2<small>9</div>										
+									</div>
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <small>30-3<small>4</div>										
+									</div>
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <small>35-3<small>9</div>										
+									</div>
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="list-group-item option"><i class="fa fa-lg fa-circle-o"></i> <small>40+<small></div>										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-lg-6 col-lg-offset-3">
+							<button class="btn btn-warning btn-lg btn-block">Remove Person</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+					<button class="btn btn-primary btn-lg btn-block">Add Person</button>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="people-summary" class="panel panel-default">
+		<div class="panel-heading"><h2>People <span class="pull-right"><i class="fa fa-asterisk"></i></span></h2></div>
+		<div class="panel-body">
+			<div class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="" class="col-sm-4 control-label">Gender <sup><i class="fa fa-asterisk"></i></sup></label>
+					<div class="col-sm-6">
+						<div class="row">
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>Male</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>Female</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-4 control-label">Age Brackets <sup><i class="fa fa-asterisk"></i></sup></label>
+					<div class="col-sm-6">
+						<div class="row">
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>-17</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>18-21</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>22-25</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>26-29</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>30-34</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>35-39</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+							<div class="col-xs-6 col-sm-3">
+								<label class="control-label"><small>40+</small></label>
+								<input type="number" min="0" class="form-control" value=0>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="landing-pad" class="panel panel-warning">
+		<div class="panel-heading"><h2>Landing Pad <span class="pull-right"><i class="fa fa-asterisk"></i></span></h2></div>
+		<div class="panel-body">
+			<div class="form-horizontal" role="form">
+				<div class="form-group">
+			    <div class="col-sm-offset-4 col-sm-4">
+			      <button type="submit" class="btn btn-primary btn-lg btn-block">Complete</button>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</section>
+</template>

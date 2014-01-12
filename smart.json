@@ -3,6 +3,7 @@
     "bootstrap-cyborg": {},
     "font-awesome": {},
     "knockout": {},
-    "underscore-string-latest": {}
+    "underscore-string-latest": {},
+    "houston": {}
   }
 }
