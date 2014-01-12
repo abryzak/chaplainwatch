@@ -2,6 +2,7 @@
   "packages": {
     "bootstrap-cyborg": {},
     "font-awesome": {},
-    "knockout": {}
+    "knockout": {},
+    "underscore-string-latest": {}
   }
 }
