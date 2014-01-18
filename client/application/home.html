@@ -1,0 +1,11 @@
+<template name="home">
+	{{customInfo}}
+	<p>{{interventions}}</p>
+	<div class="list-group">
+		{{#each interventions}}
+	  <a href="{{pathFor 'interventionEdit'}}" class="list-group-item">
+	  	{{> interventionSummaryItem}}
+	  </a>
+	  {{/each}}
+	</div>
+</template>

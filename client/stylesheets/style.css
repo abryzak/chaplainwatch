@@ -1,4 +1,24 @@
 /* CSS declarations go here */
+.validationMessage {
+	font-size: larger;
+	font-weight: bolder;
+	color: #cc0000;
+	margin: 5px 0px 5px 5px;
+	display: block;
+}
+.validationMessage:before {
+	content: "\f06a";
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.compact-heading {
+	margin-top: 0px;
+	margin-bottom: 3px;
+}
 input[type=date],input[type=time] {
 	-webkit-appearance: none;
   -moz-appearance: none;
@@ -25,4 +45,8 @@ textarea {
 }
 .fa-check-square-o {
 	margin-right: -1.5px;
+}
+.form-label-icon {
+	font-size: 75%;
+	vertical-align: super;
 }

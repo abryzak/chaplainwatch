@@ -12,3 +12,5 @@ knockout
 underscore-string-latest
 houston
 iron-router
+external-file-loader
+moment

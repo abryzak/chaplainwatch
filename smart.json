@@ -4,6 +4,8 @@
     "font-awesome": {},
     "knockout": {},
     "underscore-string-latest": {},
-    "houston": {}
+    "houston": {},
+    "external-file-loader": {},
+    "moment": {}
   }
 }
