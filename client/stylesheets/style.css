@@ -1,4 +1,6 @@
 /* CSS declarations go here */
+body { padding-top: 70px; }
+
 .validationMessage {
 	font-size: larger;
 	font-weight: bolder;

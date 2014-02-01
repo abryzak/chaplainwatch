@@ -9,7 +9,7 @@
         "version": "4.0.3"
       },
       "knockout": {
-        "version": "0.3.0"
+        "version": "0.3.1"
       },
       "underscore-string-latest": {
         "version": "2.3.3"
@@ -21,7 +21,13 @@
         "version": "0.1.4"
       },
       "moment": {
-        "version": "2.2.1"
+        "version": "2.5.1"
+      },
+      "headers": {
+        "version": "0.0.13"
+      },
+      "reactive-table": {
+        "version": "0.0.3"
       }
     },
     "packages": {
@@ -37,8 +43,8 @@
       },
       "knockout": {
         "git": "https://github.com/bevanhunt/meteor-knockout.git",
-        "tag": "v0.3.0",
-        "commit": "47d046d3710c78e94ee3ffddc7d1d6d385b1524b"
+        "tag": "v0.3.1",
+        "commit": "cba4f2abe1a4e4842eee7307f2d261ed2d00f63e"
       },
       "underscore-string-latest": {
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
@@ -57,8 +63,18 @@
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
-        "tag": "v2.2.1",
-        "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "headers": {
+        "git": "https://github.com/gadicohen/meteor-headers.git",
+        "tag": "v0.0.13",
+        "commit": "1b259f3af3df7a297584b1e2e5e89de8ad1a963a"
+      },
+      "reactive-table": {
+        "git": "https://github.com/ecohealthalliance/reactive-table.git",
+        "tag": "v0.0.3",
+        "commit": "06836d423ea85d6ef23095e970b298afa8e32ef7"
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",

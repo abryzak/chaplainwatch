@@ -1,0 +1,13 @@
+<template name="interventionComponent">
+  <article>
+    <div class="form-group has-success" style="margin-bottom: 5px;">
+      <label for="event-location" class="col-sm-4 control-label">
+        <span>{{ label }}</span>
+        <i class="fa fa-fw form-label-icon fa-asterisk fa-check"></i>
+      </label>
+      <div class="col-sm-6">
+        <textarea class="form-control input-lg update-on-blur" rows="4" placeholder="{{ placeholder }}">{{ value }}</textarea>
+      </div>
+    </div>
+  </article>
+</template>

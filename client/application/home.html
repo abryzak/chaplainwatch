@@ -1,11 +1,15 @@
 <template name="home">
-	{{customInfo}}
-	<p>{{interventions}}</p>
-	<div class="list-group">
-		{{#each interventions}}
-	  <a href="{{pathFor 'interventionEdit'}}" class="list-group-item">
-	  	{{> interventionSummaryItem}}
-	  </a>
-	  {{/each}}
-	</div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="list-group">
+        {{#each interventions}}
+        <a href="{{pathFor 'editIntervention'}}" class="list-group-item">
+          {{> interventionSummaryItem}}
+        </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div>{{ reactiveTable interventions }}</div>
+  <!-- https://github.com/ecohealthalliance/reactive-table -->
 </template>

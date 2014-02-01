@@ -6,6 +6,8 @@
     "underscore-string-latest": {},
     "houston": {},
     "external-file-loader": {},
-    "moment": {}
+    "moment": {},
+    "headers": {},
+    "reactive-table": {}
   }
 }
