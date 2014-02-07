@@ -1,0 +1,14 @@
+<template name="showIntervention">
+	{{#with interventionExtend this}}
+	<h3>
+		{{{type_}}}
+		<span class="badge pull-right">{{reference}}</span>
+	</h3>
+	<p>
+		<span class="label {{#if $eq status 'Completed'}}label-success{{else}}label-info{{/if}} pull-right">{{status}}</span>
+		{{statusDescription}}
+	</p>
+	<strong>Raw Ouput (for testing)</strong>
+	<pre>{{prettyPrint}}</pre>
+	{{/with}}
+</template>

@@ -1,0 +1,38 @@
+<template name="basicDashboard">
+  <h2>Interventions</h2>
+  <ul class="nav nav-tabs nav-justified">
+    {{#each filterOptions}}
+    <li class="{{#if userSessionEquals 'selectedFilter' name}}active{{/if}}">
+      <a href="#" class="select-filter" id="{{name}}">{{label}}</a>
+    </li>
+    {{/each}}
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        Sort By <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        {{#each sortOptions}}
+        <li class="{{#if userSessionEquals 'selectedSort' name}}active{{/if}}">
+          <a href="#" class="select-sort" id="{{name}}">{{label}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </li>
+  </ul>
+  <div class="list-group">
+    {{#each interventions}}
+      {{#with interventionExtend this}}
+      <a {{#if completedOn}}href="{{pathFor 'showIntervention'}}"{{else}}href="{{pathFor 'editIntervention'}}"{{/if}} class="list-group-item">
+        <h4 class="list-group-item-heading">
+          {{{type_}}}
+          <span class="badge pull-right">{{reference}}</span>
+        </h4>
+        <p class="list-group-item-text">
+          <span class="label {{#if $eq status 'Completed'}}label-success{{else}}label-info{{/if}} pull-right">{{status}}</span>
+          {{{statusDescription}}}
+        </p>
+      </a>
+      {{/with}}
+    {{/each}}
+  </div>
+</template>

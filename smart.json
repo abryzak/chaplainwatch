@@ -4,10 +4,17 @@
     "font-awesome": {},
     "knockout": {},
     "underscore-string-latest": {},
-    "houston": {},
-    "external-file-loader": {},
+    "houston": {
+      "branch": "master",
+      "git": "https://github.com/gterrono/houston.git"
+    },
     "moment": {},
     "headers": {},
-    "reactive-table": {}
+    "reactive-table": {},
+    "handlebar-helpers": {},
+    "collection-helpers": {},
+    "roles": {},
+    "accounts-entry": {},
+    "user-session": {}
   }
 }

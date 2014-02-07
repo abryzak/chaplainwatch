@@ -1,8 +1,9 @@
 <template name="interventionSummaryItem">
+  <!-- this is no longer used, refer to dashboard_basic.html-->
   <div class="row">
     <div class="col-sm-4">
       <h4 class="compact-heading">
-        {{type}} <label class="label label-default">#{{reference}}</label>
+        {{type}} <label class="label label-default">#{{ reference }}</label>
       </h4>
     </div>
     <div class="col-sm-2">
@@ -15,4 +16,12 @@
       <strong>Responding To </strong> {{respondingTo}}
     </div>
   </div>
+</template>
+
+<template name="interventionSummaryRow">
+  <tr>
+    <td>{{ reference }}</td>
+    <td>{{ type }}</td>
+    <td>{{ respondingTo }}</td>
+  </tr>
 </template>

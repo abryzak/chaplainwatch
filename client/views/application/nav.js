@@ -1,7 +1,13 @@
 Template.nav.events({
 	'click #new-intervention' : function(e, template) {
 		e.preventDefault;
-		newInterventionId = Meteor.call('addIntervention', {}, function(error, id) {
+		newInterventionId = Meteor.call(
+			'addIntervention',
+			{
+				'setOwnerAsCurrentUser': true,
+				'setStartAsNow': true
+			},
+			function(error, id) {
 			if (error) {
 				alert(error);
 			} else {

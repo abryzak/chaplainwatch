@@ -1,6 +1,12 @@
 <template name="home">
   <div class="row">
     <div class="col-lg-12">
+      {{>basicDashboard}}
+    </div>
+  </div>
+  <!--
+  <div class="row">
+    <div class="col-lg-12">
       <div class="list-group">
         {{#each interventions}}
         <a href="{{pathFor 'editIntervention'}}" class="list-group-item">
@@ -10,6 +16,6 @@
       </div>
     </div>
   </div>
-  <div>{{ reactiveTable interventions }}</div>
+  <div></div>
   <!-- https://github.com/ecohealthalliance/reactive-table -->
 </template>

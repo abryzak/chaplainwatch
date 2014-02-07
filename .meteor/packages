@@ -12,7 +12,13 @@ knockout
 underscore-string-latest
 houston
 iron-router
-external-file-loader
 moment
 headers
 reactive-table
+handlebar-helpers
+accounts-password
+spin
+roles
+accounts-ui
+accounts-entry
+user-session

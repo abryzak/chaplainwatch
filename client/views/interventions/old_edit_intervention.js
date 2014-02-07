@@ -381,7 +381,7 @@ Template.editIntervention.rendered = function() {
       timeout : 10000
     }
   );
-  ko.applyBindings(currentViewModel);
+  //ko.applyBindings(currentViewModel);
   //https://github.com/steveluscher/knockout.meteor/blob/master/examples/dynamic_finders/example.js
   //also helps//https://github.com/bevanhunt/meteor-barista/blob/master/client/coffee/orders.coffee
   //console.. ko.dataFor(document.body) (gets the viewModel)

@@ -9,25 +9,38 @@
         "version": "4.0.3"
       },
       "knockout": {
-        "version": "0.3.1"
+        "version": "0.3.2"
       },
       "underscore-string-latest": {
         "version": "2.3.3"
       },
       "houston": {
-        "version": "1.0.0"
-      },
-      "external-file-loader": {
-        "version": "0.1.4"
+        "git": "https://github.com/gterrono/houston.git",
+        "branch": "master"
       },
       "moment": {
         "version": "2.5.1"
       },
       "headers": {
-        "version": "0.0.13"
+        "version": "0.0.15"
       },
       "reactive-table": {
         "version": "0.0.3"
+      },
+      "handlebar-helpers": {
+        "version": "0.0.9"
+      },
+      "collection-helpers": {
+        "version": "0.2.3"
+      },
+      "roles": {
+        "version": "1.2.6"
+      },
+      "accounts-entry": {
+        "version": "0.5.3"
+      },
+      "user-session": {
+        "version": "0.2.0"
       }
     },
     "packages": {
@@ -43,8 +56,8 @@
       },
       "knockout": {
         "git": "https://github.com/bevanhunt/meteor-knockout.git",
-        "tag": "v0.3.1",
-        "commit": "cba4f2abe1a4e4842eee7307f2d261ed2d00f63e"
+        "tag": "v0.3.2",
+        "commit": "f74925ca030cf4c266b2ca4637f33c2cd56d0a06"
       },
       "underscore-string-latest": {
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
@@ -52,14 +65,9 @@
         "commit": "4a5d70eee48fbd90a6e6fc78747250d704a0b3bb"
       },
       "houston": {
-        "git": "https://github.com/gterrono/meteor-admin-ui.git",
-        "tag": "v1.0.0",
-        "commit": "e98660af09cb3e4e90848abfe943a06e7068cccc"
-      },
-      "external-file-loader": {
-        "git": "https://github.com/davidd8/meteor-external-file-loader.git",
-        "tag": "v0.1.4",
-        "commit": "352694a7cf906b8241161c2fd1435161c1d5409f"
+        "git": "https://github.com/gterrono/houston.git",
+        "branch": "master",
+        "commit": "1a5f69cdc7cb2761080c601e2f04275d05985737"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
@@ -68,13 +76,38 @@
       },
       "headers": {
         "git": "https://github.com/gadicohen/meteor-headers.git",
-        "tag": "v0.0.13",
-        "commit": "1b259f3af3df7a297584b1e2e5e89de8ad1a963a"
+        "tag": "v0.0.15",
+        "commit": "0852ea4df6b1314914c4355160d0b0fd61675aea"
       },
       "reactive-table": {
         "git": "https://github.com/ecohealthalliance/reactive-table.git",
         "tag": "v0.0.3",
         "commit": "06836d423ea85d6ef23095e970b298afa8e32ef7"
+      },
+      "handlebar-helpers": {
+        "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
+        "tag": "v0.0.9",
+        "commit": "71e94c99462b8801a34c5363510758b6ff5f5ac7"
+      },
+      "collection-helpers": {
+        "git": "https://github.com/dburles/meteor-collection-helpers.git",
+        "tag": "v0.2.3",
+        "commit": "52c4c692421acea557fb329f43f65ed11b4832df"
+      },
+      "roles": {
+        "git": "https://github.com/alanning/meteor-roles.git",
+        "tag": "v1.2.6",
+        "commit": "f2a9058281f8f2fe028767841d7445aadd6893cf"
+      },
+      "accounts-entry": {
+        "git": "https://github.com/BeDifferential/accounts-entry.git",
+        "tag": "v0.5.3",
+        "commit": "20641be951a1a2e563cd2e6bf552f2cc8fe03984"
+      },
+      "user-session": {
+        "git": "https://github.com/BenjaminRH/meteor-user-session.git",
+        "tag": "v0.2.0",
+        "commit": "9ce8cb3385f6bc08918dd30313f2251a42e6ff3b"
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
@@ -90,6 +123,11 @@
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.6.2",
         "commit": "ce56e58b45624dce992490f3a1c10f10d3948bae"
+      },
+      "just-i18n": {
+        "git": "https://github.com/subhog/meteor-just-i18n.git",
+        "tag": "v0.1.1",
+        "commit": "ce88ac66c0dc107dc2da93ce152616115838101f"
       }
     }
   }

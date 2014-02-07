@@ -6,3 +6,9 @@ Meteor.publish('intervention', function(options) {
 Meteor.publish('interventions', function(options) {
 	return Interventions.find({}, options);
 });
+
+Meteor.publish(null, function (){ 
+  return Meteor.roles.find({})
+})
+
+Houston.add_collection(Meteor.roles);

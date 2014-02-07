@@ -1,0 +1,73 @@
+<template name="responseComponent">
+  <fieldset>
+    <div class="form-group {{#if isValid}}has-success{{else}}has-error{{/if}}">
+      <label for="{{ elementId }}" class="col-sm-4 control-label compact-label">
+        {{#if label}}
+          {{ label }}
+          <i class="fa fa-fw form-label-icon {{#if isValid}}fa-check{{else}}fa-asterisk{{/if}}"></i>
+        {{/if}}
+      </label>
+      <div class="{{#if configOptions.extraWide}}col-sm-8 col-lg-6{{else}}col-sm-6 col-lg-4{{/if}}">
+        {{#if $eq response 'text'}}
+          <input class="form-control update-on-blur" type="text" placeholder="{{ placeholder }}" value="{{value}}">
+        {{/if}}
+        {{#if $eq response 'textarea'}}
+          <textarea class="form-control update-on-blur" rows="4" id="{{ elementId }}" placeholder="{{ placeholder }}" {{#if required}}required{{/if}}>{{ value }}</textarea>
+        {{/if}}
+        {{#if $eq response 'date'}}
+          <input type="date" class="form-control update-on-blur" id="{{ elementId }}" value="{{ value }}" {{#if required}}required{{/if}}>
+        {{/if}}
+        {{#if $eq response 'time'}}
+          <input type="time" class="form-control update-on-blur" id="{{ elementId }}" value="{{ value }}" {{#if required}}required{{/if}}>
+        {{/if}}
+        {{#if $eq response 'multi-select'}}
+          <ul class="list-group" id="{{ elementId }}">
+            {{#each options}}{{#include $parent=..}}
+            <li class="list-group-item option update-selection-on-click {{#if $inList value $parent.value}}text-info{{else}}text-default{{/if}}">
+              <i class="fa fa-lg fa-fw {{#if $inList value $parent.value}}fa-check-square-o{{else}}fa-square-o{{/if}}"></i>
+              <span>{{{ html }}}</span>
+            </li>
+            {{/include}}{{/each}}
+          </ul>
+        {{/if}}
+        {{#if $eq response 'single-select'}}
+          <ul class="list-group" id="{{ elementId }}">
+            {{#each options}}{{#include $parent=..}}
+            <li class="list-group-item option update-selection-on-click {{#if $eq value $parent.value}}text-info{{else}}text-default{{#if $parent.isValid}} hidden{{/if}}{{/if}}">
+              <i class="fa fa-lg fa-fw {{#if $eq value $parent.value}}fa-bullseye{{else}}fa-circle-o{{/if}}"></i>
+              <span>{{{ html }}}</span>
+            </li>
+            {{/include}}{{/each}}
+            {{#if isValid}}
+            <button class="btn btn-default btn-block btn-sm show-all-options">Show All</button>
+            {{/if}}
+          </ul>
+        {{/if}}
+        {{#if $eq response 'geolocation'}}
+          <button class="btn btn-info geolocation">Find Location</button>
+          <span class="help-block">
+            <strong>
+              <i class="fa fa-globe"></i>
+              Location: <small>{{value}}</small>
+            </strong>
+          </span>
+        {{/if}}
+        {{#if $eq response 'landing-button'}}
+          <button class="btn {{#if allAvailablePanelsComplete}}btn-info{{else}}btn-default{{/if}} btn-block landing-button" {{#unless allAvailablePanelsComplete}}disabled{{/unless}}>
+            <i class="fa fa-power-off"></i> Complete
+          </button>
+          <div class="alert {{#if allAvailablePanelsComplete}}alert-success{{else}}alert-warning{{/if}}" style="margin-top: 10px;">
+            <strong>{{#if allAvailablePanelsComplete}}All Sections are Complete{{else}}Some Sections are not Complete{{/if}}</strong>
+            {{#unless allAvailablePanelsComplete}}
+              <ul>
+                {{#each panelsNotComplete}}
+                <li><a href="#{{elementId}}" class="internal-link">{{label}} Section</a></li>
+                {{/each}}
+              </ul>
+            {{/unless}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </fieldset>
+</template>

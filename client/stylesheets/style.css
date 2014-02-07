@@ -28,11 +28,17 @@ input[type=date],input[type=time] {
 .control-label,.checkbox,.radio-inline,.radio label {
 	font-size: 16pt;
 }
+.control-label.compact-label {
+	padding-top: 3px;
+}
 .list-group-item.option {
 	font-size:18px;
 }
+.list-group-item {
+	padding: 2px 15px;
+}
 .form-group {
-	margin-bottom: 35px;
+	margin-bottom: 8px;
 }
 textarea {
 	resize: vertical;
@@ -41,6 +47,7 @@ textarea {
 .panel-heading {
 	font-size: smaller;
 }
+
 /* fix for slightly off icons */
 .fa-square-o {
 	margin-left: -1.5px;
