@@ -27,6 +27,7 @@ Meteor.methods({
     };
 
     var intervention = {
+      reference: incrementCounter('interventionReference'),
       createdOn: now.format(),
       createdByIp: clientIP,
       createdById: userId,
@@ -43,7 +44,11 @@ Meteor.methods({
     if ( options.setStartAsNow ) {
       intervention.startDate = now.format('YYYY[-]MM[-]DD');
       intervention.startTime = now.format('HH[:]mm');
-    }
+    };
+
+    if ( options.setDispatchAsNow ) {
+      intervention.dispatchTime = now.format('HH[:]mm');
+    };
 
     newInterventionId = Interventions.insert(intervention);
     return newInterventionId;

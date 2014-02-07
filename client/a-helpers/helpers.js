@@ -71,7 +71,14 @@ Handlebars.registerHelper('$inList', function(item, array) {
 	}
 });
 
+Handlebars.registerHelper('24HourTime', function(dateTimeString) {
+	return moment(dateTimeString).format('HH:mm');
+});
 
 Handlebars.registerHelper('userSessionEquals', function(key, value) {
-	return UserSession.equals(key, value);
-})
+	return UserSession.equals(key, value) || false;
+});
+
+Handlebars.registerHelper('userEmail', function(user) {
+	return user.emails[0].address;
+});

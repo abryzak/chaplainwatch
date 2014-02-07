@@ -15,6 +15,8 @@
     "collection-helpers": {},
     "roles": {},
     "accounts-entry": {},
-    "user-session": {}
+    "user-session": {},
+    "mongo-counter": {},
+    "chosen-package": {}
   }
 }

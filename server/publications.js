@@ -11,4 +11,9 @@ Meteor.publish(null, function (){
   return Meteor.roles.find({})
 })
 
+Meteor.publish(null, function () {
+  return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
+});
+
 Houston.add_collection(Meteor.roles);
+

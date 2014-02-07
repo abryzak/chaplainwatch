@@ -22,3 +22,5 @@ roles
 accounts-ui
 accounts-entry
 user-session
+mongo-counter
+chosen-package

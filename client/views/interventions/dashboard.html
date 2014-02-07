@@ -1,33 +1,119 @@
 <template name="dashboard">
   <div class="row">
-    <div class="col-lg-9 col-md-9">
+    <div class="col-lg-12">
       <h2>HQ Dashboard</h2>
-    </div>
-    <div class="col-lg-3 col-md-3">
-      <button class="btn btn-default">Add Intervention</button>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
+      <button class="btn btn-info btn-sm pull-right" id="add-intervention">Add Intervention</button>
       <h3 class="panel-title">Interventions</h3>
     </div>
     <div class="panel-body">
+      <ul class="list-group">
+      {{#each interventions}}
+      <li class="list-group-item list-group-item-warning" style="margin-bottom:8px;">
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1">
+            <span class="label {{#if dispatchTime}}{{#if finishTime}}label-success{{else}}label-info{{/if}}{{else}}label-default{{/if}}" style="width: 100%; font-size: larger; margin-bottom: 3px; display: block;">{{reference}}</span>
+            <div>
+              <button class="btn btn-sm btn-default btn-block toggle-edit"><i class="fa fa-edit"></i> Edit</button>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-1 col-sm-1">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+              <input type="time" class="form-control update-on-blur" value="{{dispatchTime}}" name="dispatchTime">
+            </div>
+            {{else}}
+            <i class="fa fa-clock-o"></i> {{dispatchTime}}
+            {{/if}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+              <input type="text" class="form-control update-on-blur" placeholder="Location" value="{{locationDescription}}" name="locationDescription">
+            </div>
+            {{else}}
+            <div><i class="fa fa-map-marker"></i> {{locationDescription}}</div>
+            {{/if}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+              <input type="text" class="form-control update-on-blur" placeholder="Description" value="{{dispatchDescription}}" name="dispatchDescription">
+            </div>
+            {{else}}
+            <div><i class="fa fa-info-circle"></i> {{dispatchDescription}}</div>
+            {{/if}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <select class="x-chosen-select form-control update-on-change" name="ownerEmail">
+                <option disabled>Team Member...</option>
+                {{#each users}}
+                <option value="{{userEmail this}}" {{selectedIfOwner}}>{{fullName}}</option>
+                {{/each}}
+              </select>
+            </div>
+            {{else}}
+            <i class="fa fa-user"></i> {{ownerUser.profile.firstName}} {{ownerUser.profile.lastName}}
+            {{/if}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-clock-o fa-flip-horizontal"></i></span>
+              <input type="time" class="form-control update-on-blur input-sm" value="{{finishTime}}" name="finishTime">
+            </div>
+            {{else}}
+            <i class="fa fa-clock-o fa-flip-horizontal"></i> {{finishTime}}
+            {{/if}}
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1">
+            <div class="btn-group">
+              <button class="btn btn-xs btn-warning"><i class="fa fa-ban"></i></button>
+              <!-- clear all fields -->
+              <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button>
+            </div>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+      </ul>
     </div>
-    <table class="table">
+    <table class="table table-bordered table-condensed table-striped">
       <thead>
         <tr>
           <th>Ref</th>
-          <th>User</th>
-          <th>Type</th>
+          <th>Dispatch</th>
           <th>Location</th>
-          <th>Liquor Accord</th>
-          <th>Comms Start</th>
-          <th>Comms Finish</th>
+          <th>Description</th>
+          <th>Time Off</th>
+          <th>Team</th>
+          <th>Owner</th>
         </tr>
       </thead>
       <tbody>
         {{#each interventions}}
-          {{> interventionSummaryRow}}
+          <tr>
+            <td>{{reference}}</td>
+            <td><input type="time" class="form-control input-sm"></td>
+            <td><input type="text" class="form-control input-sm"></td>
+            <td><input type="text" class="form-control input-sm"></td>
+            <td><input type="time" class="form-control input-sm"></td>
+            <td><input type="text" class="form-control input-sm"></td>
+            <td>
+              <select class="chosen-select">
+                {{#each users}}<option>{{profile.firstName}} {{profile.lastName}}</option>{{/each}}
+              </select>
+            </td>
+          </tr>
         {{/each}}
       </tbody>
       <tfoot>

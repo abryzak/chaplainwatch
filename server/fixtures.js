@@ -2,6 +2,8 @@
 var allUsers = Meteor.users.find();
 
 if (Interventions.find().count() == 0) {
+  setCounter('interventionReference', 1983);
+  //Set the first counter var
   allUsers.forEach( function (user) {
     var interventionId = Meteor.call('addIntervention');
     Meteor.call('updateIntervention', interventionId, {
@@ -9,7 +11,6 @@ if (Interventions.find().count() == 0) {
       startDate: '2014-01-03',
       startTime: '23:00',
       liquorAccordPrecinct: "valley",
-      reference: 1928,
       type: 'first-aid',
       respondingTo: ['city-safe'],
     });
@@ -19,7 +20,6 @@ if (Interventions.find().count() == 0) {
       startDate: '2014-01-03',
       startTime: '23:20',
       liquorAccordPrecinct: "valley",
-      reference: 1929,
       type: 'diversion',
       respondingTo: ['city-safe'],
     });
@@ -29,7 +29,6 @@ if (Interventions.find().count() == 0) {
       startDate: '2014-01-03',
       startTime: '23:25',
       liquorAccordPrecinct: "valley",
-      reference: 1949,
       type: 'support',
       respondingTo: ['city-safe'],
     });
@@ -39,7 +38,6 @@ if (Interventions.find().count() == 0) {
       startDate: '2014-01-03',
       startTime: '23:27',
       liquorAccordPrecinct: "valley",
-      reference: 1950,
       type: 'advice',
       respondingTo: ['city-safe'],
     });
