@@ -17,6 +17,7 @@
     "accounts-entry": {},
     "user-session": {},
     "mongo-counter": {},
-    "chosen-package": {}
+    "chosen-package": {},
+    "moment-timezone": {}
   }
 }

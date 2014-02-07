@@ -18,7 +18,7 @@ Meteor.methods({
     //var user = Meteor.user();
     // Future - check that the user is logged in etc
     var clientIP = getIP(self);
-    var now = moment();
+    var now = new getNow();
 
     var user = Meteor.user();
     userId = null;    
@@ -59,7 +59,7 @@ Meteor.methods({
     //var user = Meteor.user();
     // Future - check that the user is logged in etc
     var clientIP = getIP(self);
-    var now = moment();
+    var now = new getNow();
     if ( values.ownerId ) {
       values.ownerUser = Meteor.users.findOne( {_id: values.ownerId} );
       //this will NOT be live, and is a work around until collection-helpers works
@@ -83,6 +83,9 @@ Meteor.methods({
     return interventionId;
   }
 });
+clearIntervention = function(interventionId, options) {
+
+};
 
 /*
 Meteor.methods({

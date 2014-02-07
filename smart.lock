@@ -25,7 +25,7 @@
         "version": "0.0.15"
       },
       "reactive-table": {
-        "version": "0.0.3"
+        "version": "0.1.0"
       },
       "handlebar-helpers": {
         "version": "0.0.9"
@@ -47,6 +47,9 @@
       },
       "chosen-package": {
         "version": "0.11.1"
+      },
+      "moment-timezone": {
+        "version": "0.0.1.4"
       }
     },
     "packages": {
@@ -87,8 +90,8 @@
       },
       "reactive-table": {
         "git": "https://github.com/ecohealthalliance/reactive-table.git",
-        "tag": "v0.0.3",
-        "commit": "06836d423ea85d6ef23095e970b298afa8e32ef7"
+        "tag": "v0.1.0",
+        "commit": "c75c7b6e3d73a09ccf0940dd2e06956f846ecdbe"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
@@ -124,6 +127,11 @@
         "git": "https://github.com/Ore4444/chosen-package.git",
         "tag": "v0.11.1",
         "commit": "8d1a748bafaae8b6005a979ab7261ac14ff38052"
+      },
+      "moment-timezone": {
+        "git": "https://github.com/acreeger/meteor-moment-timezone",
+        "tag": "v0.0.1.4",
+        "commit": "feb364efb1ec0cefb870d5981b2b836b45211455"
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
