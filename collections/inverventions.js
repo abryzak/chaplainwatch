@@ -81,11 +81,37 @@ Meteor.methods({
       { $set: intervention }
       );
     return interventionId;
-  }
+  },
+  clearIntervention: function(interventionId, options) {
+    intervention = Interventions.findOne({_id: interventionId});
+    doNotClear = [
+      '_id',
+      'reference',
+      'createdOn',
+      'createdByIp',
+      'createdById',
+      'updatedOn',
+      'updatedByIp',
+      'updatedById',
+    ]
+    clearedIntervention = {};
+    _.each(intervention, function(value, key, list) {
+      if (doNotClear.indexOf(key) == -1 ) {
+        clearedIntervention[key] = "";
+      }
+    });
+    console.log(interventionId, options, clearedIntervention);
+    Interventions.update(
+      { _id: interventionId },
+      { $unset: clearedIntervention }
+    );
+    return interventionId;
+  },
+  removeIntervention: function(interventionId, options) {
+    Interventions.remove(interventionId);
+    return true;
+  },
 });
-clearIntervention = function(interventionId, options) {
-
-};
 
 /*
 Meteor.methods({

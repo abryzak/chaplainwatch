@@ -33,6 +33,30 @@ Template.dashboard.events({
       }
     });
   },
+  'click .clear-intervention': function(e) {
+    e.preventDefault;
+    newInterventionId = Meteor.call(
+      'clearIntervention', this._id, {}, function(error, id) {
+      if (error) {
+        alert(error);
+      } else {
+        //
+      }
+    });
+  },
+  'click .remove-intervention': function(e) {
+    e.preventDefault;
+    if (window.confirm('Are you sure you want to remove this Intervention, there is no undo.')) {
+      completed = Meteor.call(
+        'removeIntervention', this._id, {}, function(error, id) {
+        if (error) {
+          alert(error);
+        } else {
+          //
+        }
+      });
+    }
+  },
   'click .toggle-edit': function(e) {
     e.preventDefault;
     if ( UserSession.get('editing') == this._id ) {

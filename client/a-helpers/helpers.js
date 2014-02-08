@@ -80,5 +80,5 @@ Handlebars.registerHelper('userSessionEquals', function(key, value) {
 });
 
 Handlebars.registerHelper('userEmail', function(user) {
-	return user.emails[0].address;
+	return user.emails[0].address
 });

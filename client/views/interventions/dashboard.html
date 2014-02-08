@@ -15,10 +15,9 @@
       <li class="list-group-item list-group-item-warning" style="margin-bottom:8px;">
         <div class="row">
           <div class="col-lg-1 col-md-1 col-sm-1">
-            <span class="label {{#if dispatchTime}}{{#if finishTime}}label-success{{else}}label-info{{/if}}{{else}}label-default{{/if}}" style="width: 100%; font-size: larger; margin-bottom: 3px; display: block;">{{reference}}</span>
-            <div>
-              <button class="btn btn-sm btn-default btn-block toggle-edit"><i class="fa fa-edit"></i> Edit</button>
-            </div>
+            <span class="label {{#if dispatchTime}}{{#if finishTime}}label-success{{else}}label-info{{/if}}{{else}}label-default{{/if}}" style="width: 100%; font-size: larger; margin-bottom: 3px; display: block;">{{reference}} </span>
+            <button class="btn btn-sm btn-default btn-block toggle-edit btn-slim"><i class="fa fa-edit"></i> Edit</button>
+            <a href="{{pathFor 'showIntervention'}}" class="btn btn-sm btn-default btn-block toggle-edit btn-slim"><i class="fa fa-info-circle"></i> View</a>
           </div>
           <div class="col-lg-2 col-md-1 col-sm-1">
             {{#if userSessionEquals 'editing' _id}}
@@ -37,7 +36,7 @@
               <input type="text" class="form-control update-on-blur" placeholder="Location" value="{{locationDescription}}" name="locationDescription">
             </div>
             {{else}}
-            <div><i class="fa fa-map-marker"></i> {{locationDescription}}</div>
+            <div class="lead"><i class="fa fa-map-marker"></i> {{locationDescription}}</div>
             {{/if}}
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2">
@@ -47,7 +46,7 @@
               <input type="text" class="form-control update-on-blur" placeholder="Description" value="{{dispatchDescription}}" name="dispatchDescription">
             </div>
             {{else}}
-            <div><i class="fa fa-info-circle"></i> {{dispatchDescription}}</div>
+            <div class="lead"><i class="fa fa-info-circle"></i> {{dispatchDescription}}</div>
             {{/if}}
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2">
@@ -62,7 +61,7 @@
               </select>
             </div>
             {{else}}
-            <i class="fa fa-user"></i> {{ownerUser.profile.firstName}} {{ownerUser.profile.lastName}}
+            <div class="lead"><i class="fa fa-user"></i> {{ownerUser.profile.firstName}} {{ownerUser.profile.lastName}}</div>
             {{/if}}
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2">
@@ -76,10 +75,9 @@
             {{/if}}
           </div>
           <div class="col-lg-1 col-md-1 col-sm-1">
-            <div class="btn-group">
-              <button class="btn btn-xs btn-warning"><i class="fa fa-ban"></i></button>
-              <!-- clear all fields -->
-              <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button>
+            <div>
+              <button class="btn btn-sm btn-warning clear-intervention btn-block btn-slim"><i class="fa fa-ban"></i> Clear </button>
+              <button class="btn btn-sm btn-danger remove-intervention btn-block btn-slim"><i class="fa fa-times"></i> Remove</button>
             </div>
           </div>
         </div>
@@ -87,38 +85,6 @@
       {{/each}}
       </ul>
     </div>
-    <table class="table table-bordered table-condensed table-striped">
-      <thead>
-        <tr>
-          <th>Ref</th>
-          <th>Dispatch</th>
-          <th>Location</th>
-          <th>Description</th>
-          <th>Time Off</th>
-          <th>Team</th>
-          <th>Owner</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each interventions}}
-          <tr>
-            <td>{{reference}}</td>
-            <td><input type="time" class="form-control input-sm"></td>
-            <td><input type="text" class="form-control input-sm"></td>
-            <td><input type="text" class="form-control input-sm"></td>
-            <td><input type="time" class="form-control input-sm"></td>
-            <td><input type="text" class="form-control input-sm"></td>
-            <td>
-              <select class="chosen-select">
-                {{#each users}}<option>{{profile.firstName}} {{profile.lastName}}</option>{{/each}}
-              </select>
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-      <tfoot>
-      </tfoot>
-    </table>
     <div class="panel-footer">
     </div>
   </div>

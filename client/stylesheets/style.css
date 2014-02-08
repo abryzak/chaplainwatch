@@ -1,61 +1,66 @@
 /* CSS declarations go here */
 body { padding-top: 70px; }
 
+
+.btn-slim {
+  padding-top: 1px;
+  padding-bottom: 0px;
+}
 .validationMessage {
-	font-size: larger;
-	font-weight: bolder;
-	color: #cc0000;
-	margin: 5px 0px 5px 5px;
-	display: block;
+  font-size: larger;
+  font-weight: bolder;
+  color: #cc0000;
+  margin: 5px 0px 5px 5px;
+  display: block;
 }
 .validationMessage:before {
-	content: "\f06a";
-	display: inline-block;
-	font-family: FontAwesome;
-	font-style: normal;
-	font-weight: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
+  content: "\f06a";
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
 }
 .compact-heading {
-	margin-top: 0px;
-	margin-bottom: 3px;
+  margin-top: 0px;
+  margin-bottom: 3px;
 }
 input[type=date],input[type=time] {
-	-webkit-appearance: none;
+  -webkit-appearance: none;
   -moz-appearance: none;
 }
 .control-label,.checkbox,.radio-inline,.radio label {
-	font-size: 16pt;
+  font-size: 16pt;
 }
 .control-label.compact-label {
-	padding-top: 3px;
+  padding-top: 3px;
 }
 .list-group-item.option {
-	font-size:18px;
+  font-size:18px;
 }
 .list-group-item {
-	padding: 2px 15px;
+  padding: 2px 15px;
 }
 .form-group {
-	margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 textarea {
-	resize: vertical;
+  resize: vertical;
 }
 
 .panel-heading {
-	font-size: smaller;
+  font-size: smaller;
 }
 
 /* fix for slightly off icons */
 .fa-square-o {
-	margin-left: -1.5px;
+  margin-left: -1.5px;
 }
 .fa-check-square-o {
-	margin-right: -1.5px;
+  margin-right: -1.5px;
 }
 .form-label-icon {
-	font-size: 75%;
-	vertical-align: super;
+  font-size: 75%;
+  vertical-align: super;
 }
