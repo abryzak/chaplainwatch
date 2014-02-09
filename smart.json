@@ -2,7 +2,6 @@
   "packages": {
     "bootstrap-cyborg": {},
     "font-awesome": {},
-    "knockout": {},
     "underscore-string-latest": {},
     "houston": {
       "branch": "master",
@@ -18,6 +17,7 @@
     "user-session": {},
     "mongo-counter": {},
     "chosen-package": {},
-    "moment-timezone": {}
+    "moment-timezone": {},
+    "highcharts-with-exporting": {}
   }
 }

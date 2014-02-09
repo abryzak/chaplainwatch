@@ -64,3 +64,9 @@ textarea {
   font-size: 75%;
   vertical-align: super;
 }
+
+/* reactive table fix */
+.reactive-table .sortable {
+  color: rgb(231, 231, 231);
+  font-size: larger;
+}
