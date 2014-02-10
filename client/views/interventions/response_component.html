@@ -43,6 +43,18 @@
             {{/if}}
           </ul>
         {{/if}}
+        {{#if $eq response 'grid'}}
+          <div class="col-sm-12">
+            <div class="row">
+              {{#each options}}{{#include $parent=..}}
+              <div class="col-xs-6 col-sm-6 col-lg-6">
+                <label class="control-label" style="font-size: 85%;">{{{ html }}}</label>
+                <input type="number" min="0" class="form-control input-sm update-grid-on-blur" value="{{$get $parent.value this.value}}">
+              </div>
+              {{/include}}{{/each}}
+            </div>
+          </div>
+        {{/if}}
         {{#if $eq response 'geolocation'}}
           <button class="btn btn-info geolocation">Find Location</button>
           <span class="help-block">

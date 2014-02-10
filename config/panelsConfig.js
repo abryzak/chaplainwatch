@@ -28,6 +28,6 @@ allPanels = [
 	new Panel('transport', 'Transport', 'fa-truck', {type: ['transport']} ),
 	new Panel('non-service', 'Advice', 'fa-times-circle', {type: ['non-service']} ),
 	//new Panel('people-full', 'People', 'fa-group', {type: ['first-aid', 'transport']} ),
-	//new Panel('people-compact', 'People', 'fa-group', {type: ['diversion', 'support', 'advice']} ),
+	new Panel('people-compact', 'People', 'fa-group', {type: ['diversion', 'support', 'advice']} ),
 	new Panel('landing-pad', 'Protocols', 'fa-power-off', {} ),
 ];

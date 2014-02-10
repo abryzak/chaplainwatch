@@ -11,6 +11,19 @@ Template.responseComponent.events({
       }
     });
   },
+  'blur .update-grid-on-blur' : function( event ) {
+    var updatedValue = parseInt(event.currentTarget.value);
+    //console.log(this, event);
+    var values = {};
+    values[this.fieldName] = _.extend({},this.$parent.value);
+    values[this.fieldName][this.value] = updatedValue;
+    Meteor.call('updateIntervention', this.$parent.documentId, values, function(error, id) {
+      if ( error ) {
+        alert(error.reason);
+      } else {
+      }
+    });
+  },
   'click .update-selection-on-click' : function( event ) {
     var optionToToggle = this.value;
     var updatedValue = optionToToggle;

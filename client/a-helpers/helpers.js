@@ -30,6 +30,12 @@ Handlebars.registerHelper('$inList', function(item, array) {
 	}
 });
 
+Handlebars.registerHelper('$get', function(obj, key) {
+  if ( _.isObject(obj) ) {
+    return ( obj[key] );
+  }
+});
+
 Handlebars.registerHelper('24HourTime', function(dateTimeString) {
 	return moment(dateTimeString).format('HH:mm');
 });
