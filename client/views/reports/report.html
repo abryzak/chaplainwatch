@@ -1,7 +1,7 @@
 <template name="report">
 	<h1>Interventions Report</h1>
 	<section>
-		<h2>Overview</h2>
+		<h2>Summary</h2>
 		<div class="row">
 			<div class="col-lg-6">
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
@@ -11,29 +11,6 @@
 	</section>
 	<section>
 		<h2>Detail</h2>
-		<table class="table table-condensed table-striped table-bordered">
-			<thead>
-				<tr>
-					<th>Reference</th>
-					<th>Type</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-			{{#each interventions}}
-				<tr>
-					<td>{{reference}}</td>
-					<td>{{{typeHtml}}}</td>
-					<td>{{foo}}</td>
-					<td>{{type}}</td>
-					<td>{{status}}</td>
-					<td>{{started}}</td>
-					<td>{{createdAt}}</td>
-					<td>updatedAt: {{updatedAt}}</td>
-				</tr>
-			{{/each}}
-			</tbody>
-		</table>
     {{reactiveTable interventions settings}}
 	</section>
 </template>

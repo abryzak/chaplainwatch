@@ -7,20 +7,13 @@ Interventions = new Meteor.Collection("interventions", {
       return moment(i.updatedOn);
     },
     //make this automatic at some point (ie. for all fields go through & do this)
-    typeName: function(i) {
-      var option = _.findWhere(allOptions, { fieldName: 'type', value: i.type} );
-      if (option) {
-        return option.name; 
-      }
-      else return 'No Type';
-    },
+    typeName: function(i) { return responseNamesFromField(i, 'type', null, 'Not Selected'); },
     typeHtml: function(i) {
-      var option = _.findWhere(allOptions, { fieldName: 'type', value: i.type} );
-      if (option) {
-        return option.html; 
-      }
-      else return '<i class="fa fa-fw fa-question-circle"></i> New intervention';
+      return responseNamesFromField( i, 'type', 'html', '<i class="fa fa-fw fa-question-circle"></i> New intervention' );
     },
+    respondingToName: function(i) { return responseNamesFromField(i, 'respondingTo'); },
+    liquorAccordPrecinctName: function(i) { return responseNamesFromField(i, 'liquorAccordPrecinct'); },
+    settingName: function(i) { return responseNamesFromField(i, 'setting'); },
     status: function(i) {
       if ( i.completedOn ) { return 'Completed' };
       return 'In Progress';

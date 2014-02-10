@@ -4,6 +4,11 @@ Template.report.settings = function() {
       { key: 'reference', label: 'Reference' },
       { key: 'typeName', label: 'Type' },
       { key: 'status', label: 'Status' },
+      { key: 'startedMoment', label: 'Started' },
+      { key: 'respondingToName', label: 'Responding To' },
+      { key: 'liquorAccordPrecinctName', label: 'Liquor Accord Precinct' },
+      { key: 'settingName', label: 'Setting' },
+      { key: 'locationDescription', label: 'Location', fn: function (value) { return value || ' '; } }
     ]
   }
 }
