@@ -1,16 +1,19 @@
 <template name="report">
-	<h1>Interventions Report</h1>
-	<section>
-		<h2>Summary</h2>
-		<div class="row">
-			<div class="col-lg-6">
-        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+  <h1>Interventions Report</h1>
+  <section>
+    <h2>Summary</h2>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div id="pie-intervention-types" style="min-width: 290px; height: 390px; margin: 0 auto;"></div>
       </div>
-		</div>
-		
-	</section>
-	<section>
-		<h2>Detail</h2>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div id="line-interventions-per-week" style="min-width: 290px; height: 390px; margin: 0 auto;"></div>
+      </div>
+    </div>
+    
+  </section>
+  <section>
+    <h2>Detail</h2>
     {{reactiveTable interventions settings}}
-	</section>
+  </section>
 </template>
