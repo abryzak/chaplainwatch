@@ -3,8 +3,11 @@
     <div class="form-group {{#if isValid}}has-success{{else}}has-error{{/if}}">
       <label for="{{ elementId }}" class="col-sm-4 control-label compact-label">
         {{#if label}}
+          {{#if configOptions.hideLabelOnForm}}
+          {{else}}
           {{ label }}
           <i class="fa fa-fw form-label-icon {{#if isValid}}fa-check{{else}}fa-asterisk{{/if}}"></i>
+          {{/if}}
         {{/if}}
       </label>
       <div class="{{#if configOptions.extraWide}}col-sm-8 col-lg-6{{else}}col-sm-6 col-lg-4{{/if}}">

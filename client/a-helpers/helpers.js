@@ -1,4 +1,7 @@
-
+Handlebars.registerHelper('prettyResponse', function( value, fieldName ) {
+  return responseNamesFromField( value, fieldName, 'html', '<small>Not Entered</small>' );
+});
+  
 /*
 Handlebars.registerHelper('interventionComponentOld', function(fieldName) {
 	var field = _.findWhere(interventionFields, {name: fieldName});

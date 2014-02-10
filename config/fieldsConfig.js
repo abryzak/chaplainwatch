@@ -16,7 +16,7 @@ interventionFields = [
   new Field('launch-pad', 'liquorAccordPrecinct', 'Liquor Accord Precinct', 'single-select', {}, true),
   new Field('launch-pad', 'setting', 'Setting', 'single-select', {}, true),
   new Field('launch-pad', 'locationDescription', 'Location', 'textarea', {}, false),
-  new Field('launch-pad', 'locationCoordinates', '', 'geolocation', {}, false),
+  new Field('launch-pad', 'locationCoordinates', 'Location Coordinates', 'geolocation', {hideLabelOnForm: true}, false),
   new Field('launch-pad', 'type', 'Type', 'single-select', {}, true),
   new Field('first-aid', 'conditionType', 'Condition Type', 'multi-select', {}, true),
   new Field('first-aid', 'conditionRating', 'Condition Rating', 'single-select', {extraWide: true}, true),
@@ -41,7 +41,7 @@ interventionFields = [
   new Field('people-compact', 'ageBracket', 'Age Bracket', 'grid', {}, true),
   new Field('people-compact', 'culturalBackground', 'Cultural Background', 'grid', {}, true),
   new Field('landing-pad', 'teamMemberNotes', 'Team Member Notes', 'textarea', {}, false),
-  new Field('landing-pad', 'completedOn', '', 'landing-button', {}, false),
+  new Field('landing-pad', 'completedOn', 'Completed On', 'landing-button', {hideLabelOnForm: true}, false),
 ];
 
 
