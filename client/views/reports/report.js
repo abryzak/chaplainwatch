@@ -39,7 +39,7 @@ getInterventionsPerWeek = function( interventions ) {
     });
     totalsGroupedByWeek[weekKey] = totals;
   });
-  console.log(totalsGroupedByWeek)
+  //console.log(totalsGroupedByWeek)
   return result;
 }
 
@@ -53,8 +53,9 @@ Template.report.settings = function() {
       { key: 'respondingToName', label: 'Responding To' },
       { key: 'liquorAccordPrecinctName', label: 'Liquor Accord Precinct' },
       { key: 'settingName', label: 'Setting' },
-      { key: 'locationDescription', label: 'Location', fn: function (value) { return value || ' '; } }
-    ]
+      { key: 'locationDescription', label: 'Location', fn: function (value) { return value || ' '; } },
+    ],
+    attrs:  { 'data-id': '_id' }
   }
 };
 
@@ -90,5 +91,13 @@ Template.report.rendered = function() {
     series: interventionsPerWeek.series,
   });
 
-
 };
+
+Template.report.events({
+  'click .reactive-table tbody tr' : function( event, template ) {
+    var _id = event.srcElement.parentElement.getAttribute('data-id');
+    if ( _id ) {
+      Router.go( 'showIntervention', {_id: _id} );
+    }
+  },
+});
