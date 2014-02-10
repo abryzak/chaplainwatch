@@ -2,9 +2,10 @@
 var allUsers = Meteor.users.find();
 
 if (Interventions.find().count() == 0) {
+  //Interventions.create({reference: 20014});
   setCounter('interventionReference', 1983);
   //Set the first counter var
-  allUsers.forEach( function (user) {
+  [].forEach( function (user) {
     var interventionId = Meteor.call('addIntervention');
     Meteor.call('updateIntervention', interventionId, {
       ownerId: user._id,

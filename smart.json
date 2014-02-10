@@ -11,13 +11,13 @@
     "headers": {},
     "reactive-table": {},
     "handlebar-helpers": {},
-    "collection-helpers": {},
     "roles": {},
     "accounts-entry": {},
     "user-session": {},
     "mongo-counter": {},
     "chosen-package": {},
     "moment-timezone": {},
-    "highcharts-with-exporting": {}
+    "highcharts-with-exporting": {},
+    "collection2": {}
   }
 }

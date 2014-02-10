@@ -2,7 +2,8 @@ Template.report.settings = function() {
   return {
     fields: [
       { key: 'reference', label: 'Reference' },
-      { key: 'type', label: 'Type' },
+      { key: 'typeName', label: 'Type' },
+      { key: 'status', label: 'Status' },
     ]
   }
 }
@@ -10,7 +11,7 @@ Template.report.settings = function() {
 Template.report.rendered = function() {
   var interventions = this.data.interventions;
   var totals = _.countBy(interventions, function(i) {
-    return i.type;
+    return i.typeName;
   });
   var chartData = [];
   _.each(totals, function(value, key, list) {

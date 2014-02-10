@@ -3,11 +3,11 @@ Option = function(fieldName, value, name, html) {
   self.fieldName = fieldName;
   self.value = value;
   if (name == null) {
-    self.text = _.str.titleize( replaceAll('-',' ', self.value) );
+    self.name = _.str.titleize( replaceAll('-',' ', self.value) );
   } else {
-    self.text = name;
+    self.name = name;
   }
-  self.html = html || self.text;
+  self.html = html || self.name;
 };
 allOptions = [
   new Option('respondingTo', 'none'),

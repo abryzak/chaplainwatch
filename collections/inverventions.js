@@ -1,15 +1,102 @@
-Interventions = new Meteor.Collection("interventions");
-
-getIP = function() {
-  var clientIP = null;
-  if ( Meteor.isClient ) {
-    clientIP = headers.getClientIP();
-  } else {
-    //var clientIP = headers.methodClientIP(this);
-    //having issues with this on start up (i think its creating records before the connection is set up?)
+Interventions = new Meteor.Collection("interventions", {
+  virtualFields: {
+    startedMoment:  function(i) {
+      return moment( i.startDate + ' ' + i.startTime + ':00', "YYYY-MM-DD HH:mm:ss" );
+    },
+    updatedMoment: function(i) {
+      return moment(i.updatedOn);
+    },
+    //make this automatic at some point (ie. for all fields go through & do this)
+    typeName: function(i) {
+      var option = _.findWhere(allOptions, { fieldName: 'type', value: i.type} );
+      if (option) {
+        return option.name; 
+      }
+      else return 'No Type';
+    },
+    typeHtml: function(i) {
+      var option = _.findWhere(allOptions, { fieldName: 'type', value: i.type} );
+      if (option) {
+        return option.html; 
+      }
+      else return '<i class="fa fa-fw fa-question-circle"></i> New intervention';
+    },
+    status: function(i) {
+      if ( i.completedOn ) { return 'Completed' };
+      return 'In Progress';
+    },
+    ownerUser: function(i) {
+      return Meteor.users.findOne( {_id: i.ownerId} );
+    },
+    ownerName: function(i) {
+      var result = 'no one';
+      if (_.isObject(i.ownerUser)) {
+        result = i.ownerUser.profile.firstName;
+      }
+      return result;
+    },
+    statusDescription: function(i) {
+      var result = 'Started by <strong>' + i.ownerName + '</strong> ';
+      result += i.startedMoment.fromNow() + ', ';
+      result += 'last edited ' + i.updatedMoment.fromNow() + ', ';
+      if ( i.completedOn ) {
+        result += ' completed ' + moment(i.completedOn).fromNow() + '.';
+      } else {
+        result += ' not yet completed.';  
+      }
+      return result;
+    },
+    prettyPrint: function(i) {
+      return JSON.stringify(i, true, 2);
+    },
   }
-  return clientIP;
-};
+});
+
+/*
+Handlebars.registerHelper('interventionExtend', function(intervention) {
+  //need to move this to somwhere client & server can access
+  var i = _.extend({}, intervention);
+  //prbably best to go through all fields and to this automatically
+  i.type_ = function() {
+    var option = _.findWhere(allOptions, { fieldName: 'type', value: i.type} );
+    if (option) {
+      return option.html; 
+    }
+    else return '<i class="fa fa-fw fa-question-circle"></i> New intervention';
+  };
+  i.status = function() {
+    if ( i.completedOn ) {
+      return 'Completed'
+    } else {
+      return 'In Progress'
+    }
+  };
+  i.started = moment(
+    i.startDate + ' ' + i.startTime + ':00',
+    "YYYY-MM-DD HH:mm:ss"
+    );
+  i.updated = moment(i.updatedOn);
+  i.ownerName = function() {
+    var result = 'no one';
+    if (_.isObject(i.ownerUser)) {
+      result = i.ownerUser.profile.firstName;
+    }
+    return result;
+  };
+  i.statusDescription = function() {
+    var result = 'Started by <strong>' + i.ownerName() + '</strong> ';
+    result += i.started.fromNow() + ', ';
+    result += 'last edited ' + i.updated.fromNow() + ', ';
+    if ( i.completedOn ) {
+      result += ' completed ' + moment(i.completedOn).fromNow() + '.';
+    }
+    result += ' not yet completed.';
+    return result;
+  };
+  i.prettyPrint = JSON.stringify(i, true, 2);
+  return i;
+});
+*/
 
 Meteor.methods({
   addIntervention: function(options) {
@@ -17,7 +104,7 @@ Meteor.methods({
     var options = options || {};
     //var user = Meteor.user();
     // Future - check that the user is logged in etc
-    var clientIP = getIP(self);
+    var clientIP = new getIP();
     var now = new getNow();
 
     var user = Meteor.user();
@@ -38,7 +125,7 @@ Meteor.methods({
 
     if ( options.setOwnerAsCurrentUser && userId) {
       intervention.ownerId = userId;
-      intervention.ownerUser = Meteor.users.findOne( {_id: userId} );
+      //intervention.ownerUser = Meteor.users.findOne( {_id: userId} );
     };
 
     if ( options.setStartAsNow ) {
@@ -58,12 +145,8 @@ Meteor.methods({
     console.log(interventionId, values, options);
     //var user = Meteor.user();
     // Future - check that the user is logged in etc
-    var clientIP = getIP(self);
+    var clientIP = new getIP();
     var now = new getNow();
-    if ( values.ownerId ) {
-      values.ownerUser = Meteor.users.findOne( {_id: values.ownerId} );
-      //this will NOT be live, and is a work around until collection-helpers works
-    }
 
     var user = Meteor.user();
     userId = null;    

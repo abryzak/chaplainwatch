@@ -16,13 +16,20 @@
 				<tr>
 					<th>Reference</th>
 					<th>Type</th>
+					<th>Status</th>
 				</tr>
 			</thead>
 			<tbody>
 			{{#each interventions}}
 				<tr>
 					<td>{{reference}}</td>
+					<td>{{{typeHtml}}}</td>
+					<td>{{foo}}</td>
 					<td>{{type}}</td>
+					<td>{{status}}</td>
+					<td>{{started}}</td>
+					<td>{{createdAt}}</td>
+					<td>updatedAt: {{updatedAt}}</td>
 				</tr>
 			{{/each}}
 			</tbody>
