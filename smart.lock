@@ -22,7 +22,7 @@
         "version": "0.0.15"
       },
       "reactive-table": {
-        "version": "0.1.0"
+        "version": "0.1.1"
       },
       "handlebar-helpers": {
         "version": "0.0.9"
@@ -85,8 +85,8 @@
       },
       "reactive-table": {
         "git": "https://github.com/ecohealthalliance/reactive-table.git",
-        "tag": "v0.1.0",
-        "commit": "c75c7b6e3d73a09ccf0940dd2e06956f846ecdbe"
+        "tag": "v0.1.1",
+        "commit": "16f8dccf7dbf5727cd93111fc3680a8b9681e7f6"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
@@ -155,8 +155,8 @@
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.2.36",
-        "commit": "d01745787de0711ffd095dcd212749d94a3fe0eb"
+        "tag": "v0.2.37",
+        "commit": "4531fc43dea7bab04e4647e9820fa52631408909"
       }
     }
   }

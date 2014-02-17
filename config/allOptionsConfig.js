@@ -128,4 +128,14 @@ allOptions = [
   new Option('nonServiceType', 'assistance-not-required', 'Assistance not Required'),
   new Option('nonServiceType', 'assistance-refused'),
   new Option('nonServiceType', 'other'),
-]
+  new Option('durationHours', 0, '0'),
+  new Option('durationHours', 1, '1'),
+  new Option('durationHours', 2, '2'),
+  new Option('durationHours', 3, '3'),
+  new Option('durationHours', 4, '4'),
+  new Option('durationHours', 5, '5'),
+  new Option('durationMinutes', 0, '0'),
+  new Option('durationMinutes', 15, '15'),
+  new Option('durationMinutes', 30, '30'),
+  new Option('durationMinutes', 45, '45'),
+];

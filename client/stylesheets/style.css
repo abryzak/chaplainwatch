@@ -2,6 +2,10 @@
 body { padding-top: 70px; }
 
 
+.spacer {
+  margin-bottom: 7px; 
+}
+
 .btn-slim {
   padding-top: 1px;
   padding-bottom: 0px;

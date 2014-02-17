@@ -10,8 +10,8 @@ Field = function(panel, name, label, response, configOptions, required) {
   self.configOptions = configOptions;
 };
 interventionFields = [
-  new Field('launch-pad', 'startDate', 'Date', 'date', {}, true),
-  new Field('launch-pad', 'startTime', 'Time', 'time', {}, true),
+  new Field('launch-pad', 'startDate', 'Start Date', 'date', {}, true),
+  new Field('launch-pad', 'startTime', 'Start Time', 'time', {}, true),
   new Field('launch-pad', 'respondingTo', 'Responding To', 'multi-select', {}, true),
   new Field('launch-pad', 'liquorAccordPrecinct', 'Liquor Accord Precinct', 'single-select', {}, true),
   new Field('launch-pad', 'setting', 'Setting', 'single-select', {}, true),
@@ -40,6 +40,9 @@ interventionFields = [
   new Field('people-compact', 'gender', 'Gender', 'grid', {}, true),
   new Field('people-compact', 'ageBracket', 'Age Bracket', 'grid', {}, true),
   new Field('people-compact', 'culturalBackground', 'Cultural Background', 'grid', {}, true),
+  new Field('landing-pad', 'durationHours', 'Hrs', 'duration', {hideLabelOnForm: true}, false),
+  new Field('landing-pad', 'durationMinutes', 'Mins', 'duration', {hideLabelOnForm: true}, false),
+  new Field('landing-pad', 'durationTotal', 'Duration', 'show', {}, true),
   new Field('landing-pad', 'teamMemberNotes', 'Team Member Notes', 'textarea', {}, false),
   new Field('landing-pad', 'completedOn', 'Completed On', 'landing-button', {hideLabelOnForm: true}, false),
 ];

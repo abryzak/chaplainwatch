@@ -68,8 +68,16 @@ Template.dashboard.events({
   'blur .update-on-blur': function(e) {
     var updatedValue = event.currentTarget.value;
     var values = {};
-    console.log(event.currentTarget);
-    values[event.currentTarget.name] = updatedValue;
+    //console.log(event.currentTarget);
+    var fieldName = event.currentTarget.name;
+    if ( fieldName == 'dispatchTime' ) {
+      var currentValue = new moment( event.currentTarget.getAttribute('data-full-value') );
+      currentValue.hour( parseInt(updatedValue.split(":")[0]) ).minute( parseInt(updatedValue.split(":")[1]) );
+      //does not solve issue of moving from 12pm to 1am!
+      values['dispatchDateTime'] = currentValue.toDate();
+    } else {
+      values[fieldName] = updatedValue;
+    }
     //console.log('documentId', documentId);
     Meteor.call('updateIntervention', this._id, values, function(error, id) {
       if ( error ) {

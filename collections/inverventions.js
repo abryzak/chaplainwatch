@@ -1,10 +1,32 @@
 Interventions = new Meteor.Collection("interventions", {
   virtualFields: {
-    startedMoment:  function(i) {
-      return moment( i.startDate + ' ' + i.startTime + ':00', "YYYY-MM-DD HH:mm:ss" );
+    startDateTimeMoment:  function(i) {
+      if ( i.startDate && i.startTime ) {
+        var result = new moment( i.startDate + ' ' + i.startTime, 'YYYY-MM-DD HH:mm' );
+        return result;
+      }
+      return null;
     },
     updatedMoment: function(i) {
-      return moment(i.updatedOn);
+      return new moment( i.updatedOn );
+    },
+    dispatchTime: function(i) {
+      if ( i.dispatchDateTime ) {
+        return new moment( i.dispatchDateTime ).format( 'HH:MM' );
+      }
+      return null;
+    },
+    durationTotal: function(i) {
+      var totalMinutes = 0;
+      totalMinutes += parseInt(i.durationHours || 0) * 60;
+      totalMinutes += parseInt(i.durationMinutes || 0);
+      return totalMinutes;
+    },
+    finishDateTimeMoment: function(i) {
+      if ( i.startDateTimeMoment && i.durationTotal ) {
+        return new moment(i.startDateTimeMoment).add('minutes', i.durationTotal);  
+      }
+      return null;
     },
     //make this automatic at some point (ie. for all fields go through & do this)
     typeName: function(i) { return responseNamesFromField(i.type, 'type', null, 'Not Selected'); },
@@ -30,7 +52,7 @@ Interventions = new Meteor.Collection("interventions", {
     },
     statusDescription: function(i) {
       var result = 'Started by <strong>' + i.ownerName + '</strong> ';
-      result += i.startedMoment.fromNow() + ', ';
+      result += ( i.startDateTimeMoment ? i.startDateTimeMoment.fromNow() : ' net yet entered ' ) + ', ';
       result += 'last edited ' + i.updatedMoment.fromNow() + ', ';
       if ( i.completedOn ) {
         result += ' completed ' + moment(i.completedOn).fromNow() + '.';
@@ -108,10 +130,10 @@ Meteor.methods({
 
     var intervention = {
       reference: incrementCounter('interventionReference'),
-      createdOn: now.format(),
+      createdOn: now.toDate(),
       createdByIp: clientIP,
       createdById: userId,
-      updatedOn: now.format(),
+      updatedOn: now.toDate(),
       updatedByIp: clientIP,
       updatedById: userId,
     };
@@ -122,12 +144,13 @@ Meteor.methods({
     };
 
     if ( options.setStartAsNow ) {
-      intervention.startDate = now.format('YYYY[-]MM[-]DD');
-      intervention.startTime = now.format('HH[:]mm');
+      intervention.startDateTime = now.toDate();
+      //intervention.startDate = now.format('YYYY[-]MM[-]DD');
+      //intervention.startTime = now.format('HH[:]mm');
     };
 
     if ( options.setDispatchAsNow ) {
-      intervention.dispatchTime = now.format('HH[:]mm');
+      intervention.dispatchDateTime = now.toDate();
     };
 
     newInterventionId = Interventions.insert(intervention);
@@ -148,7 +171,7 @@ Meteor.methods({
     };
 
     var intervention = _.extend({
-      updatedOn: now.format(),
+      updatedOn: now.toDate(),
       updatedByIp: clientIP,
       updatedById: userId,
     }, values );

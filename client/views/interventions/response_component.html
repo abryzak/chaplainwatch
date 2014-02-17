@@ -11,6 +11,9 @@
         {{/if}}
       </label>
       <div class="{{#if configOptions.extraWide}}col-sm-8 col-lg-6{{else}}col-sm-6 col-lg-4{{/if}}">
+        {{#if $eq response 'show'}}
+          <p class="lead">{{#if isValid}}{{value}} minutes total{{else}}Cannot have zero minutes{{/if}}</p>
+        {{/if}}
         {{#if $eq response 'text'}}
           <input class="form-control update-on-blur" type="text" placeholder="{{ placeholder }}" value="{{value}}">
         {{/if}}
@@ -22,6 +25,24 @@
         {{/if}}
         {{#if $eq response 'time'}}
           <input type="time" class="form-control update-on-blur" id="{{ elementId }}" value="{{ value }}" {{#if required}}required{{/if}}>
+        {{/if}}
+        {{#if $eq response 'dateTimeSeparate'}}
+          <input type="hidden" class="composite" id="{{ elementId }}" value="{{ value }}">
+          <input type="date" class="form-control update-composite-on-blur" data-composite="{{elementId}}" data-partial="date" id="{{ elementId }}-date" value="{{ composite.date }}" {{#if required}}required{{/if}}>
+          <div class="spacer"></div>
+          <input type="time" class="form-control update-composite-on-blur" data-composite="{{elementId}}" data-partial="time" id="{{ elementId }}-time" value="{{ composite.time }}" {{#if required}}required{{/if}}>
+        {{/if}}
+        {{#if $eq response 'duration'}}
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" disabled>{{label}}</a>
+                {{#each options}}{{#include $parent=..}}
+                <a class="btn {{#if $eq value $parent.value}}btn-info{{else}}btn-default{{/if}} update-selection-on-click" id="{{ elementId }}">{{{ html }}}</a>
+                {{/include}}{{/each}}
+              </div>
+            </div>
+          </div>
         {{/if}}
         {{#if $eq response 'multi-select'}}
           <ul class="list-group" id="{{ elementId }}">

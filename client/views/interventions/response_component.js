@@ -11,6 +11,33 @@ Template.responseComponent.events({
       }
     });
   },
+  'blur .update-composite-on-blur' : function( event ) {
+    var currentCompositeElementId = event.currentTarget.getAttribute('data-composite');
+    var currentCompositeValue = document.getElementById(currentCompositeElementId).value;
+    var updatedPartial = event.currentTarget.value;
+    var partialType = event.currentTarget.getAttribute('data-partial');
+    var updatedValue = new moment( currentCompositeValue );
+    if ( partialType == 'date' ) {
+      var partialDate = new moment( updatedPartial, 'YYYY-MM-DD' );
+      updatedValue.year( partialDate.year() ).month( partialDate.month() ).date( partialDate.date() ); 
+    } else if ( partialType == 'time' )
+    {
+      var partialTime = new moment( updatedPartial, 'HH:mm:ss' );
+      updatedValue.hour( partialTime.hour() ).minute( partialTime.minute() ).second( partialTime.second() ); 
+    } else {
+      console.log( 'could not match partialType' );
+    }
+    
+    var values = {};
+    updatedValue = updatedValue.toDate();
+    values[this.name] = updatedValue;
+    Meteor.call('updateIntervention', this.documentId, values, function(error, id) {
+      if ( error ) {
+        alert(error.reason);
+      } else {
+      }
+    });
+  },
   'blur .update-grid-on-blur' : function( event ) {
     var updatedValue = parseInt(event.currentTarget.value);
     //console.log(this, event);

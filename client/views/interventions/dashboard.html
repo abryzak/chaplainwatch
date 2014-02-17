@@ -23,10 +23,10 @@
             {{#if userSessionEquals 'editing' _id}}
             <div class="input-group input-group-sm">
               <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-              <input type="time" class="form-control update-on-blur" value="{{dispatchTime}}" name="dispatchTime">
+              <input type="time" class="form-control update-on-blur" value="{{dispatchTime}}" name="dispatchTime" data-full-value="{{ dispatchDateTime }}">
             </div>
             {{else}}
-            <i class="fa fa-clock-o"></i> {{dispatchTime}}
+            <i class="fa fa-clock-o"></i> {{#if dispatchTime}} {{dispatchTime}} {{else}} <small>Not Dispatched</small> {{/if}}
             {{/if}}
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2">
@@ -36,7 +36,7 @@
               <input type="text" class="form-control update-on-blur" placeholder="Location" value="{{locationDescription}}" name="locationDescription">
             </div>
             {{else}}
-            <div class="lead"><i class="fa fa-map-marker"></i> {{locationDescription}}</div>
+            <div><i class="fa fa-map-marker"></i> {{locationDescription}}</div>
             {{/if}}
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2">
@@ -46,7 +46,7 @@
               <input type="text" class="form-control update-on-blur" placeholder="Description" value="{{dispatchDescription}}" name="dispatchDescription">
             </div>
             {{else}}
-            <div class="lead"><i class="fa fa-info-circle"></i> {{dispatchDescription}}</div>
+            <div><i class="fa fa-info-circle"></i> {{dispatchDescription}}</div>
             {{/if}}
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2">
@@ -61,7 +61,7 @@
               </select>
             </div>
             {{else}}
-            <div class="lead"><i class="fa fa-user"></i> {{ownerUser.profile.firstName}} {{ownerUser.profile.lastName}}</div>
+            <div><i class="fa fa-user"></i> {{ownerUser.profile.firstName}} {{ownerUser.profile.lastName}}</div>
             {{/if}}
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2">

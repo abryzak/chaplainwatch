@@ -27,8 +27,8 @@ getInterventionsPerWeek = function( interventions ) {
     { name: 'Not Selected', data: [6,3,2,4,2,1,6] },
   ];
   var groupedByWeek = _.groupBy( interventions, function(intervention) {
-    var label = intervention.startedMoment.isoWeekday(7).format('[Wk Ending] D MMM');
-    var sortKey = intervention.startedMoment.format('GGGG[W]WW');
+    var label = intervention.startDateTimeMoment.isoWeekday(7).format('[Wk Ending] D MMM');
+    var sortKey = intervention.startDateTimeMoment.format('GGGG[W]WW');
     return label;
   });
   result.categories = _.keys( groupedByWeek );
@@ -49,7 +49,8 @@ Template.report.settings = function() {
       { key: 'reference', label: 'Reference' },
       { key: 'typeName', label: 'Type' },
       { key: 'status', label: 'Status' },
-      { key: 'startedMoment', label: 'Started' },
+      { key: 'startDateTimeMoment', label: 'Started' },
+      { key: 'finishDateTimeMoment', label: 'Finished' },
       { key: 'respondingToName', label: 'Responding To' },
       { key: 'liquorAccordPrecinctName', label: 'Liquor Accord Precinct' },
       { key: 'settingName', label: 'Setting' },
