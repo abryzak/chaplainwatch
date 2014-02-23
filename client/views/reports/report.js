@@ -46,13 +46,13 @@ getInterventionsPerWeek = function( interventions ) {
 Template.report.settings = function() {
   return {
     fields: [
-      { key: 'reference', label: 'Reference' },
+      { key: 'reference', label: '#' },
       { key: 'typeName', label: 'Type' },
       { key: 'status', label: 'Status' },
       { key: 'startDateTimeMoment', label: 'Started' },
       { key: 'finishDateTimeMoment', label: 'Finished' },
-      { key: 'respondingToName', label: 'Responding To' },
-      { key: 'liquorAccordPrecinctName', label: 'Liquor Accord Precinct' },
+      { key: 'respondingToName', label: 'Resp To' },
+      { key: 'liquorAccordPrecinctName', label: 'Liquor...' },
       { key: 'settingName', label: 'Setting' },
       { key: 'locationDescription', label: 'Location', fn: function (value) { return value || ' '; } },
     ],

@@ -66,12 +66,25 @@
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2">
             {{#if userSessionEquals 'editing' _id}}
-            <div class="input-group">
+            <div class="input-group input-group-sm">
               <span class="input-group-addon"><i class="fa fa-clock-o fa-flip-horizontal"></i></span>
-              <input type="time" class="form-control update-on-blur input-sm" value="{{finishTime}}" name="finishTime">
+              <select class="form-control update-on-change" name="durationHours">
+                <option disabled>Hours</option>
+                <option value="0" {{isSelected}}>0 Hrs</option>
+                <option value="1" {{isSelected}}>1 Hrs</option>
+                <option value="2" {{isSelected}}>2 Hrs</option>
+                <option value="4" {{isSelected}}>3 Hrs</option>
+                <option value="5" {{isSelected}}>4 Hrs</option>
+                <option value="6" {{isSelected}}>5 Hrs</option>
+              </select>
+              <select class="form-control update-on-change" name="durationHours">
+                <option disabled>Minutes</option>
+                <option value="0">0 Mins</option>
+                <option value="15">15 Mins</option>
+              </select>
             </div>
             {{else}}
-            <i class="fa fa-clock-o fa-flip-horizontal"></i> {{finishTime}}
+            <i class="fa fa-clock-o fa-flip-horizontal"></i> {{finishDateTimeMoment}}
             {{/if}}
           </div>
           <div class="col-lg-1 col-md-1 col-sm-1">

@@ -3,8 +3,9 @@ Template.responseComponent.events({
     var updatedValue = event.currentTarget.value;
     var values = {};
     values[this.name] = updatedValue;
-    //console.log('documentId', documentId);
-    Meteor.call('updateIntervention', this.documentId, values, function(error, id) {
+    console.log('update-on-blur', this);
+    updateDocument = 'update' + _.str.titleize( this.documentCollection );
+    Meteor.call( updateDocument , this.documentId, values, function(error, id) {
       if ( error ) {
         alert(error.reason);
       } else {
@@ -31,7 +32,8 @@ Template.responseComponent.events({
     var values = {};
     updatedValue = updatedValue.toDate();
     values[this.name] = updatedValue;
-    Meteor.call('updateIntervention', this.documentId, values, function(error, id) {
+    updateDocument = 'update' + _.str.titleize( this.documentCollection );
+    Meteor.call( updateDocument , this.documentId, values, function(error, id) {
       if ( error ) {
         alert(error.reason);
       } else {
@@ -44,7 +46,8 @@ Template.responseComponent.events({
     var values = {};
     values[this.fieldName] = _.extend({},this.$parent.value);
     values[this.fieldName][this.value] = updatedValue;
-    Meteor.call('updateIntervention', this.$parent.documentId, values, function(error, id) {
+    updateDocument = 'update' + _.str.titleize( this.$parent.documentCollection );
+    Meteor.call( updateDocument , this.$parent.documentId, values, function(error, id) {
       if ( error ) {
         alert(error.reason);
       } else {
@@ -60,7 +63,8 @@ Template.responseComponent.events({
     }
     var values = {};
     values[this.fieldName] = updatedValue;
-    Meteor.call('updateIntervention', this.$parent.documentId, values, function(error, id) {
+    updateDocument = 'update' + _.str.titleize( this.$parent.documentCollection );
+    Meteor.call( updateDocument , this.$parent.documentId, values, function(error, id) {
       if ( error ) {
         alert(error.reason);
       } else {
@@ -76,7 +80,8 @@ Template.responseComponent.events({
         var longitude = position.coords.longitude;
         updatedValues.locationCoordinates = [latitude, longitude];
         updatedValues.locationError = null;
-        Meteor.call('updateIntervention', documentId, updatedValues, function(error, id) {
+        updateDocument = 'update' + _.str.titleize( this.documentCollection );
+        Meteor.call( updateDocument , documentId, updatedValues, function(error, id) {
           if ( error ) {
             alert(error.reason);
           } else {
@@ -86,7 +91,8 @@ Template.responseComponent.events({
         function(error){
           updatedValues.locationCoordinates = error.message;
           updatedValues.locationError = error.message;
-          Meteor.call('updateIntervention', documentId, updatedValues, function(error, id) {
+          updateDocument = 'update' + _.str.titleize( this.documentCollection );
+          Meteor.call( updateDocument , documentId, updatedValues, function(error, id) {
             if ( error ) {
               alert(error.reason);
             } else {
@@ -104,7 +110,8 @@ Template.responseComponent.events({
       completedOn: new moment().format(),
     }
     //console.log('landing button clicked');
-    Meteor.call('updateIntervention', this.documentId, values, function(error, id) {
+    updateDocument = 'update' + _.str.titleize( this.documentCollection );
+    Meteor.call( updateDocument , this.documentId, values, function(error, id) {
       if ( error ) {
         alert(error.reason);
       } else {
@@ -116,5 +123,16 @@ Template.responseComponent.events({
     $element = $(event.srcElement);
     $element.closest('ul').children('li').removeClass('hidden')
     $element.addClass('hidden');
+  },
+  'click .add-document-on-click' : function( event, template ) {
+    event.preventDefault();
+    //this is not generic, but at the moment only used for person
+    var newPersonId = Meteor.call( 'addPerson', {}, this.documentId,
+      function(error, id) {
+        if (error) {
+          alert(error);
+        }
+      }
+    );
   }
 });

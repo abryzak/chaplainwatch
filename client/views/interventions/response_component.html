@@ -1,4 +1,16 @@
 <template name="responseComponent">
+  {{#if $eq response 'panel-group'}}
+    <div>
+      <h5>List of all subDocument IDs <small>for testing</small></h5>
+      {{#each subDocuments}}
+        <p>{{_id}}</p>
+      {{/each}}
+      {{#each subPanels}}
+        <h5>{{#each this.fields}}{{this.documentId}}, {{/each}} <small>for testing, shows the document IDs on the fields</small></h5>
+        {{>panel}}
+      {{/each}}
+    </div>
+  {{/if}}
   <fieldset>
     <div class="form-group {{#if isValid}}has-success{{else}}has-error{{/if}}">
       <label for="{{ elementId }}" class="col-sm-4 control-label compact-label">
@@ -11,6 +23,11 @@
         {{/if}}
       </label>
       <div class="{{#if configOptions.extraWide}}col-sm-8 col-lg-6{{else}}col-sm-6 col-lg-4{{/if}}">
+        {{#if $eq response 'panel-group'}}
+          <button class="btn btn-default btn-block add-document-on-click">
+            <i class="fa fa-plus"></i> Add {{ name }}
+          </button>
+        {{/if}}
         {{#if $eq response 'show'}}
           <p class="lead">{{#if isValid}}{{value}} minutes total{{else}}Cannot have zero minutes{{/if}}</p>
         {{/if}}
