@@ -1,10 +1,27 @@
-
 var allUsers = Meteor.users.find();
 
 if (Interventions.find().count() == 0) {
-  //Interventions.create({reference: 20014});
-  setCounter('interventionReference', 1983);
+
+  var addedInterventions = [];
+  var addedPeople = [];
+  _.each(oneImport.interventions, function(intervention, index, list) {
+    var people = intervention.people;
+    intervention.people = null;
+    intervention.completedOn = new moment(intervention.finishOld).format();
+    var newInterventionId = Interventions.insert(intervention);
+    _.each(people, function(person, index, list) {
+      person = _.extend({interventionId: newInterventionId}, person);
+      var newPersonId = People.insert(person);
+      addedPeople.push(newPersonId);
+    });
+    //need to remove people & add them as a separate collection
+    addedInterventions.push(newInterventionId);
+  });
+  console.log(addedInterventions.length, addedPeople.length);
+
+  //OLD DATA CReaTION
   //Set the first counter var
+  setCounter('interventionReference', 1983);
   [].forEach( function (user) {
     var interventionId = Meteor.call('addIntervention');
     Meteor.call('updateIntervention', interventionId, {

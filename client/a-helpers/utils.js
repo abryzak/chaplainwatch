@@ -1,8 +1,6 @@
 setUpField = function(field, index, list) {
-
   field.documentCollection = this.panel.collection;
   field.documentId = this[field.documentCollection]._id;
-  //if ( this.person ) { console.log(this.person._id, field.documentId); }
   field.value = this[this.panel.collection][field.name];
   field.isValid = isValid(field.required, field.value);
   if ( ( field.response == 'dateTimeSeparate') && ( field.value ) ) {
@@ -36,7 +34,6 @@ setUpField = function(field, index, list) {
 
 setUpPanel = function( panel, index, list ) {
   var context = _.extend( { panel: panel } , this );
-  //if ( context.person ) { console.log(context.person); }
   _.each(panel.fields, setUpField, context);
   panel.isAvailable = panel.checkIsAvailable( panel.fields, this[panel.collection] );
   panel.fieldsNotValid = _.where( panel.fields, { isValid: false } );
@@ -44,7 +41,6 @@ setUpPanel = function( panel, index, list ) {
 };
 
 getPanels = function( collection, data ) {
-  //if ( data.person ) { console.log(data.person); }
   var panels = _.where( allPanels, { collection: collection } );
   var context = _.extend( { panels: panels } , data );
   _.each(panels, setUpPanel, context);

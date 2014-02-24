@@ -51,10 +51,10 @@ Template.report.settings = function() {
       { key: 'status', label: 'Status' },
       { key: 'startDateTimeMoment', label: 'Started' },
       { key: 'finishDateTimeMoment', label: 'Finished' },
-      { key: 'respondingToName', label: 'Resp To' },
+      //{ key: 'respondingToName', label: 'Resp To' },
       { key: 'liquorAccordPrecinctName', label: 'Liquor...' },
       { key: 'settingName', label: 'Setting' },
-      { key: 'locationDescription', label: 'Location', fn: function (value) { return value || ' '; } },
+      { key: 'locationDescription', label: 'Location'},
     ],
     attrs:  { 'data-id': '_id' }
   }
