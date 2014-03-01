@@ -37,6 +37,7 @@ setUpField = function(field, index, list) {
 setUpPanel = function( panel, index, list ) {
   var context = _.extend( { panel: panel } , this );
   //if ( context.person ) { console.log(context.person); }
+  panel.fields = _.map(panel.fields, _.clone);
   _.each(panel.fields, setUpField, context);
   panel.isAvailable = panel.checkIsAvailable( panel.fields, this[panel.collection] );
   panel.fieldsNotValid = _.where( panel.fields, { isValid: false } );
@@ -46,6 +47,7 @@ setUpPanel = function( panel, index, list ) {
 getPanels = function( collection, data ) {
   //if ( data.person ) { console.log(data.person); }
   var panels = _.where( allPanels, { collection: collection } );
+  panels = _.map(panels, _.clone);
   var context = _.extend( { panels: panels } , data );
   _.each(panels, setUpPanel, context);
   return panels;
