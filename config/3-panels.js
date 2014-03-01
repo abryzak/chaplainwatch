@@ -1,22 +1,22 @@
 Panel = function(collection, name, label, icon, availableConditions) {
 	this.collection = collection;
 	this.name = name;
-	this.label = label || _.str.capitalize(name);
+	this.label = label || _.str.capitalize( name );
 	this.icon = icon || 'fa-rocket';
-	this.fields = _.where( interventionFields , { panel: this.name } );
+	this.responses = _.where( allResponses , { panel: this.name } );
 	this.elementId = name + 'Panel';
-	this.checkIsAvailable = function( panelFields, parentDocument ) {
+	this.checkIsAvailable = function( panelResponses, parentDocument ) {
 		var result = true;
-		if (panelFields.length == 0) {
+		if ( panelResponses.length == 0 ) {
 			result = false;
 		};
-		_.each( availableConditions, function(value, key, object) {
-			if ( value.indexOf(parentDocument[key]) < 0 ) { result = false; }
+		_.each( availableConditions, function( value, key, object ) {
+			if ( value.indexOf( parentDocument[key] ) < 0 ) { result = false; }
 		});
 		return result;
 	};
 	this.checkIsComplete = function() {
-		return ( this.fieldsNotValid.length == 0 )
+		return ( this.responsesNotValid.length == 0 )
 	};
 }
 allPanels = [

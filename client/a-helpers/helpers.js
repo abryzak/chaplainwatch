@@ -1,28 +1,15 @@
 Handlebars.registerHelper('prettyResponse', function( value, fieldName ) {
-  return responseNamesFromField( value, fieldName, 'html', '<small>Not Entered</small>' );
+  return responseValueOutput( value, fieldName, 'html', '<small>Not Entered</small>' );
 });
-  
-/*
-Handlebars.registerHelper('interventionComponentOld', function(fieldName) {
-	var field = _.findWhere(interventionFields, {name: fieldName});
-	var value = this[fieldName];
-	var data = _.extend({
-		interventionId: this._id,
-		value: value,
-		isValid: isValid(field.required, value),
-	}, field);
-  return new Handlebars.SafeString(Template.interventionComponent(data));
-});
-*/
 
 Handlebars.registerHelper('include', function(options) {
-    var context = {},
-        mergeContext = function(obj) {
-            for(var k in obj)context[k]=obj[k];
-        };
-    mergeContext(this);
-    mergeContext(options.hash);
-    return options.fn(context);
+  var context = {},
+    mergeContext = function(obj) {
+        for(var k in obj)context[k]=obj[k];
+    };
+  mergeContext(this);
+  mergeContext(options.hash);
+  return options.fn(context);
 });
 
 Handlebars.registerHelper('$inList', function(item, array) {

@@ -1,43 +1,43 @@
-setUpField = function(field, index, list) {
-  field.documentCollection = this.panel.collection;
-  field.documentId = this[field.documentCollection]._id;
-  field.value = this[this.panel.collection][field.name];
-  field.isValid = isValid(field.required, field.value);
-  if ( ( field.response == 'dateTimeSeparate') && ( field.value ) ) {
-    var dateTime = new moment(field.value);
-    field.composite = {
+setUpResponse = function(response, index, list) {
+  response.documentCollection = this.panel.collection;
+  response.documentId = this[response.documentCollection]._id;
+  response.value = this[this.panel.collection][response.name];
+  response.isValid = isValid(response.required, response.value);
+  if ( ( response.type == 'dateTimeSeparate') && ( response.value ) ) {
+    var dateTime = new moment(response.value);
+    response.composite = {
       date: dateTime.format('YYYY[-]MM[-]DD'),
       time: dateTime.format('HH[:]mm[:]ss'),
     };
   } else {
-    field.composite = {};
+    response.composite = {};
   }
-  if ( field.response == 'landing-button' ) {
-    field.panelsNotComplete = _.where( this.panels, { isComplete: false, isAvailable: true } );
-    field.allAvailablePanelsComplete = function() { return ( field.panelsNotComplete.length == 0 ) };
+  if ( response.type == 'landing-button' ) {
+    response.panelsNotComplete = _.where( this.panels, { isComplete: false, isAvailable: true } );
+    response.allAvailablePanelsComplete = function() { return ( response.panelsNotComplete.length == 0 ) };
   }
-  if ( field.response == 'panel-group' ) {
+  if ( response.type == 'panel-group' ) {
     var subPanels = [];
-    var subDocuments = this[field.configOptions.subDocuments];
+    var subDocuments = this[response.configOptions.subDocuments];
     _.each( subDocuments, function( subDocument, index, list ) {
       var data = { person: subDocument };
       var panels = getPanels( 'person', data );
       subPanels = subPanels.concat( panels );
       //console.log(subDocument, panels);
-      //Issue: field.documenId and even field.value inside each panel is correct.
+      //Issue: response.documenId and even response.value inside each panel is correct.
       // however in the view it is repeating for the first person result
     });
-    field.subPanels = subPanels;
-    field.subDocuments = subDocuments;
+    response.subPanels = subPanels;
+    response.subDocuments = subDocuments;
   };
 };
 
 setUpPanel = function( panel, index, list ) {
   var context = _.extend( { panel: panel } , this );
-  panel.fields = _.map(panel.fields, _.clone);
-  _.each(panel.fields, setUpField, context);
-  panel.isAvailable = panel.checkIsAvailable( panel.fields, this[panel.collection] );
-  panel.fieldsNotValid = _.where( panel.fields, { isValid: false } );
+  panel.responses = _.map(panel.responses, _.clone);
+  _.each(panel.responses, setUpResponse, context);
+  panel.isAvailable = panel.checkIsAvailable( panel.responses, this[panel.collection] );
+  panel.responsesNotValid = _.where( panel.responses, { isValid: false } );
   panel.isComplete = panel.checkIsComplete();
 };
 

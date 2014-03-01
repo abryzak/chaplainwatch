@@ -29,13 +29,13 @@ Interventions = new Meteor.Collection("interventions", {
       return null;
     },
     //make this automatic at some point (ie. for all fields go through & do this)
-    typeName: function(i) { return responseNamesFromField(i.type, 'type', null, 'Not Selected'); },
+    typeName: function(i) { return responseValueOutput(i.type, 'type', null, 'Not Selected'); },
     typeHtml: function(i) {
-      return responseNamesFromField( i.type, 'type', 'html', '<i class="fa fa-fw fa-question-circle"></i> New intervention' );
+      return responseValueOutput( i.type, 'type', 'html', '<i class="fa fa-fw fa-question-circle"></i> New intervention' );
     },
-    respondingToName: function(i) { return responseNamesFromField(i.respondingTo, 'respondingTo'); },
-    liquorAccordPrecinctName: function(i) { return responseNamesFromField(i.liquorAccordPrecinct, 'liquorAccordPrecinct'); },
-    settingName: function(i) { return responseNamesFromField(i.setting, 'setting'); },
+    respondingToName: function(i) { return responseValueOutput(i.respondingTo, 'respondingTo'); },
+    liquorAccordPrecinctName: function(i) { return responseValueOutput(i.liquorAccordPrecinct, 'liquorAccordPrecinct'); },
+    settingName: function(i) { return responseValueOutput(i.setting, 'setting'); },
     status: function(i) {
       if ( i.completedOn ) { return 'Completed' };
       return 'In Progress';

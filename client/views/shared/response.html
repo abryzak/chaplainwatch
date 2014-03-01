@@ -1,12 +1,10 @@
-<template name="responseComponent">
-  {{#if $eq response 'panel-group'}}
+<template name="response">
+  {{#if $eq type 'panel-group'}}
     <div>
-      <h5>List of all subDocument IDs <small>for testing</small></h5>
       {{#each subDocuments}}
         <p>{{_id}}</p>
       {{/each}}
       {{#each subPanels}}
-        <h5>{{#each this.fields}}{{this.documentId}}, {{/each}} <small>for testing, shows the document IDs on the fields</small></h5>
         {{>panel}}
       {{/each}}
     </div>
@@ -23,33 +21,33 @@
         {{/if}}
       </label>
       <div class="{{#if configOptions.extraWide}}col-sm-8 col-lg-6{{else}}col-sm-6 col-lg-4{{/if}}">
-        {{#if $eq response 'panel-group'}}
+        {{#if $eq type 'panel-group'}}
           <button class="btn btn-default btn-block add-document-on-click">
             <i class="fa fa-plus"></i> Add {{ name }}
           </button>
         {{/if}}
-        {{#if $eq response 'show'}}
+        {{#if $eq type 'show'}}
           <p class="lead">{{#if isValid}}{{value}} minutes total{{else}}Cannot have zero minutes{{/if}}</p>
         {{/if}}
-        {{#if $eq response 'text'}}
+        {{#if $eq type 'text'}}
           <input class="form-control update-on-blur" type="text" placeholder="{{ placeholder }}" value="{{value}}">
         {{/if}}
-        {{#if $eq response 'textarea'}}
+        {{#if $eq type 'textarea'}}
           <textarea class="form-control update-on-blur" rows="4" id="{{ elementId }}" placeholder="{{ placeholder }}" {{#if required}}required{{/if}}>{{ value }}</textarea>
         {{/if}}
-        {{#if $eq response 'date'}}
+        {{#if $eq type 'date'}}
           <input type="date" class="form-control update-on-blur" id="{{ elementId }}" value="{{ value }}" {{#if required}}required{{/if}}>
         {{/if}}
-        {{#if $eq response 'time'}}
+        {{#if $eq type 'time'}}
           <input type="time" class="form-control update-on-blur" id="{{ elementId }}" value="{{ value }}" {{#if required}}required{{/if}}>
         {{/if}}
-        {{#if $eq response 'dateTimeSeparate'}}
+        {{#if $eq type 'dateTimeSeparate'}}
           <input type="hidden" class="composite" id="{{ elementId }}" value="{{ value }}">
           <input type="date" class="form-control update-composite-on-blur" data-composite="{{elementId}}" data-partial="date" id="{{ elementId }}-date" value="{{ composite.date }}" {{#if required}}required{{/if}}>
           <div class="spacer"></div>
           <input type="time" class="form-control update-composite-on-blur" data-composite="{{elementId}}" data-partial="time" id="{{ elementId }}-time" value="{{ composite.time }}" {{#if required}}required{{/if}}>
         {{/if}}
-        {{#if $eq response 'duration'}}
+        {{#if $eq type 'duration'}}
           <div class="row">
             <div class="col-lg-12">
               <div class="btn-group btn-group-justified">
@@ -61,7 +59,7 @@
             </div>
           </div>
         {{/if}}
-        {{#if $eq response 'multi-select'}}
+        {{#if $eq type 'multi-select'}}
           <ul class="list-group" id="{{ elementId }}">
             {{#each options}}{{#include $parent=..}}
             <li class="list-group-item option update-selection-on-click {{#if $inList value $parent.value}}text-info{{else}}text-default{{/if}}">
@@ -71,7 +69,7 @@
             {{/include}}{{/each}}
           </ul>
         {{/if}}
-        {{#if $eq response 'single-select'}}
+        {{#if $eq type 'single-select'}}
           <ul class="list-group" id="{{ elementId }}">
             {{#each options}}{{#include $parent=..}}
             <li class="list-group-item option update-selection-on-click {{#if $eq value $parent.value}}text-info{{else}}text-default{{#if $parent.isValid}} hidden{{/if}}{{/if}}">
@@ -84,7 +82,7 @@
             {{/if}}
           </ul>
         {{/if}}
-        {{#if $eq response 'grid'}}
+        {{#if $eq type 'grid'}}
           <div class="col-sm-12">
             <div class="row">
               {{#each options}}{{#include $parent=..}}
@@ -96,7 +94,7 @@
             </div>
           </div>
         {{/if}}
-        {{#if $eq response 'geolocation'}}
+        {{#if $eq type 'geolocation'}}
           <button class="btn btn-info geolocation">Find Location</button>
           <span class="help-block">
             <strong>
@@ -105,7 +103,7 @@
             </strong>
           </span>
         {{/if}}
-        {{#if $eq response 'landing-button'}}
+        {{#if $eq type 'landing-button'}}
           <button class="btn {{#if allAvailablePanelsComplete}}btn-info{{else}}btn-default{{/if}} btn-block landing-button" {{#unless allAvailablePanelsComplete}}disabled{{/unless}}>
             <i class="fa fa-power-off"></i> Complete
           </button>

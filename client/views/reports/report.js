@@ -94,6 +94,8 @@ Template.report.rendered = function() {
 
 };
 
+/*
+//Will be adding buttons to the table rows
 Template.report.events({
   'click .reactive-table tbody tr' : function( event, template ) {
     var _id = event.srcElement.parentElement.getAttribute('data-id');
@@ -102,3 +104,4 @@ Template.report.events({
     }
   },
 });
+*/

@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav">
           {{#if isInRole 'hq'}}
-          <li><a href="{{ pathFor 'hqDashboard' }}">HQ</a></li>
+          <li><a href="{{ pathFor 'dashboard' }}">HQ</a></li>
           {{/if}}
           {{#if isInRole 'admin'}}
           <li><a href="{{ pathFor 'report' }}">Report</a></li>

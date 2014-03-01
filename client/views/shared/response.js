@@ -1,4 +1,4 @@
-Template.responseComponent.events({
+Template.response.events({
   'blur .update-on-blur' : function( event ) {
     var updatedValue = event.currentTarget.value;
     var values = {};
@@ -44,8 +44,8 @@ Template.responseComponent.events({
     var updatedValue = parseInt(event.currentTarget.value);
     //console.log(this, event);
     var values = {};
-    values[this.fieldName] = _.extend({},this.$parent.value);
-    values[this.fieldName][this.value] = updatedValue;
+    values[this.responseName] = _.extend({},this.$parent.value);
+    values[this.responseName][this.value] = updatedValue;
     updateDocument = 'update' + _.str.titleize( this.$parent.documentCollection );
     Meteor.call( updateDocument , this.$parent.documentId, values, function(error, id) {
       if ( error ) {
@@ -57,12 +57,12 @@ Template.responseComponent.events({
   'click .update-selection-on-click' : function( event ) {
     var optionToToggle = this.value;
     var updatedValue = optionToToggle;
-    if ( this.$parent.response == 'multi-select' ) {
+    if ( this.$parent.type == 'multi-select' ) {
       updatedArray = toggleItemInArray(this.$parent.value, optionToToggle);
       updatedValue = updatedArray;
     }
     var values = {};
-    values[this.fieldName] = updatedValue;
+    values[this.responseName] = updatedValue;
     updateDocument = 'update' + _.str.titleize( this.$parent.documentCollection );
     Meteor.call( updateDocument , this.$parent.documentId, values, function(error, id) {
       if ( error ) {
@@ -115,7 +115,7 @@ Template.responseComponent.events({
       if ( error ) {
         alert(error.reason);
       } else {
-        Router.go('showIntervention', {_id: id});
+        Router.go('viewIntervention', {_id: id});
       }
     });
   },

@@ -1,5 +1,5 @@
-Option = function(fieldName, value, name, html) {
-  this.fieldName = fieldName;
+Option = function(responseName, value, name, html) {
+  this.responseName = responseName;
   this.value = value;
   if (name == null) {
     this.name = _.str.titleize( replaceAll('-',' ', this.value) );

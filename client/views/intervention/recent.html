@@ -1,4 +1,4 @@
-<template name="basicDashboard">
+<template name="recentInterventions">
   <h2>Interventions</h2>
   <ul class="nav nav-tabs nav-justified">
     {{#each filterOptions}}
@@ -21,7 +21,7 @@
   </ul>
   <div class="list-group">
     {{#each interventionsFiltered}}
-      <a {{#if completedOn}}href="{{pathFor 'showIntervention'}}"{{else}}href="{{pathFor 'editIntervention'}}"{{/if}} class="list-group-item">
+      <a {{#if completedOn}}href="{{pathFor 'viewIntervention'}}"{{else}}href="{{pathFor 'editIntervention'}}"{{/if}} class="list-group-item">
         <h4 class="list-group-item-heading">
           {{{typeHtml}}}
           <span class="badge pull-right">{{reference}}</span>

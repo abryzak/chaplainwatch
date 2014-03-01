@@ -1,16 +1,16 @@
-Template.basicDashboard.created = function() {
+Template.recentInterventions.created = function() {
   if ( UserSession.get('selectedFilter') == undefined ) {
-    UserSession.set( 'selectedFilter', Template.basicDashboard.filterOptions()[0].name );
+    UserSession.set( 'selectedFilter', Template.recentInterventions.filterOptions()[0].name );
   }
   if ( UserSession.get('selectedSort') == undefined ) {
-    UserSession.set( 'selectedSort', Template.basicDashboard.sortOptions()[0].name );
+    UserSession.set( 'selectedSort', Template.recentInterventions.sortOptions()[0].name );
   }
 };
 
-Template.basicDashboard.interventionsFiltered = function() {
+Template.recentInterventions.interventionsFiltered = function() {
   var interventionsFiltered = [];
   var selectedFilter = _.findWhere(
-    Template.basicDashboard.filterOptions(),
+    Template.recentInterventions.filterOptions(),
     {name: UserSession.get( 'selectedFilter' )}
     );
   _.each(this.interventions, function( intervention ) {
@@ -21,7 +21,7 @@ Template.basicDashboard.interventionsFiltered = function() {
   return interventionsFiltered;
 }
 
-Template.basicDashboard.filterOptions = function() {
+Template.recentInterventions.filterOptions = function() {
 	return [
 		{
       'name': 'myInProgress',
@@ -53,7 +53,7 @@ Template.basicDashboard.filterOptions = function() {
     },
 	];
 };
-Template.basicDashboard.sortOptions = function() {
+Template.recentInterventions.sortOptions = function() {
 	return [
 		{'name': 'dateDesc', label: 'Newest First'},
 		{'name': 'dateAsc', label: 'Oldest First'},
@@ -61,7 +61,7 @@ Template.basicDashboard.sortOptions = function() {
 };
 
 
-Template.basicDashboard.events({
+Template.recentInterventions.events({
   'click .select-filter': function() {
     UserSession.set('selectedFilter', this.name);
   },

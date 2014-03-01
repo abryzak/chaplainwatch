@@ -1,12 +1,12 @@
-<template name="showIntervention">
+<template name="viewIntervention">
   <section id="header">
     <h1>
-      {{{typeHtml}}}
-      <span class="badge pull-right" style="font-size: 110%;">{{reference}}</span>
+      {{{ intervention.typeHtml }}}
+      <span class="badge pull-right" style="font-size: 110%;">{{ intervention.reference }}</span>
     </h1>
     <p class="lead">
-      <span class="label {{#if $eq status 'Completed'}}label-success{{else}}label-info{{/if}} pull-right" style="font-size: 120%;line-height: 120%;">{{status}}</span>
-      {{{statusDescription}}}
+      <span class="label {{#if $eq status 'Completed'}}label-success{{else}}label-info{{/if}} pull-right" style="font-size: 120%;line-height: 120%;">{{ intervention.status }}</span>
+      {{{ intervention.statusDescription }}}
     </p>
   </section>
   {{#each panels}}
@@ -16,7 +16,7 @@
         <h2>{{label}} <small></small></h2>
       </div>
       <div>
-        {{#each fields}}
+        {{#each responses}}
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-6">
             <h3 style="margin-top:-2px;" class="hidden-xs pull-right">{{label}}</h3>
