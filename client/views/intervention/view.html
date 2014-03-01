@@ -9,6 +9,7 @@
       {{{ intervention.statusDescription }}}
     </p>
   </section>
+  <section id="panels">
   {{#each panels}}
     {{#if isAvailable}}
     <section>
@@ -31,4 +32,19 @@
     </section>
     {{/if}}
   {{/each}}
+  </section>
+  <section id="system">
+    <div class="page-header">
+      <h2>System</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <h3 style="margin-top:-2px;" class="hidden-xs pull-right">System ID</h3>
+        <h4 style="margin-top:-2px;" class="visible-xs">System ID</h4>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-6">
+        <p class="lead">{{ intervention._id }}</p>
+      </div>
+    </div>
+  </section>
 </template>
