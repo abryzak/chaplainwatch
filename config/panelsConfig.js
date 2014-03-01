@@ -1,12 +1,11 @@
 Panel = function(collection, name, label, icon, availableConditions) {
-	var self = this;
-	self.collection = collection;
-	self.name = name;
-	self.label = label || _.str.capitalize(name);
-	self.icon = icon || 'fa-rocket';
-	self.fields = _.where( interventionFields , { panel: self.name } );
-	self.elementId = name + 'Panel';
-	self.checkIsAvailable = function( panelFields, parentDocument ) {
+	this.collection = collection;
+	this.name = name;
+	this.label = label || _.str.capitalize(name);
+	this.icon = icon || 'fa-rocket';
+	this.fields = _.where( interventionFields , { panel: this.name } );
+	this.elementId = name + 'Panel';
+	this.checkIsAvailable = function( panelFields, parentDocument ) {
 		var result = true;
 		if (panelFields.length == 0) {
 			result = false;
@@ -16,8 +15,8 @@ Panel = function(collection, name, label, icon, availableConditions) {
 		});
 		return result;
 	};
-	self.checkIsComplete = function() {
-		return ( self.fieldsNotValid.length == 0 )
+	this.checkIsComplete = function() {
+		return ( this.fieldsNotValid.length == 0 )
 	};
 }
 allPanels = [
