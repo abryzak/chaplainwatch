@@ -1,13 +1,12 @@
 Option = function(fieldName, value, name, html) {
-  var self = this;
-  self.fieldName = fieldName;
-  self.value = value;
+  this.fieldName = fieldName;
+  this.value = value;
   if (name == null) {
-    self.name = _.str.titleize( replaceAll('-',' ', self.value) );
+    this.name = _.str.titleize( replaceAll('-',' ', this.value) );
   } else {
-    self.name = name;
+    this.name = name;
   }
-  self.html = html || self.name;
+  this.html = html || this.name;
 };
 allOptions = [
   new Option('respondingTo', 'none'),

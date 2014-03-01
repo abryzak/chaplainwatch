@@ -1,13 +1,12 @@
 Field = function(panel, name, label, response, configOptions, required) {
-  var self = this;
-  self.panel = panel;
-  self.name = name;
-  self.label = label;
-  self.response = response || 'text';
-  self.required = required || false;
-  self.elementId = name + 'Field';
-  self.options = _.where(allOptions, { fieldName: self.name } );
-  self.configOptions = configOptions;
+  this.panel = panel;
+  this.name = name;
+  this.label = label;
+  this.response = response || 'text';
+  this.required = required || false;
+  this.elementId = name + 'Field';
+  this.options = _.where(allOptions, { fieldName: this.name } );
+  this.configOptions = configOptions;
 };
 interventionFields = [
   new Field('launch-pad', 'startDate', 'Start Date', 'date', {}, true),
