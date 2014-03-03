@@ -1,104 +1,113 @@
 <template name="dashboard">
-  <div class="row">
-    <div class="col-lg-12">
+  <section id="header">
+    <div class="page-header">
+      <button class="btn btn-info btn-md pull-right" id="add-intervention">Add Intervention</button>
       <h2>HQ Dashboard</h2>
     </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <button class="btn btn-info btn-sm pull-right" id="add-intervention">Add Intervention</button>
-      <h3 class="panel-title">Interventions</h3>
-    </div>
-    <div class="panel-body">
-      <ul class="list-group">
+  </section>
+  <section id="main">
+    <div class="panel-group" id="accordion">
       {{#each interventions}}
-      <li class="list-group-item list-group-item-warning" style="margin-bottom:8px;">
-        <div class="row">
-          <div class="col-lg-1 col-md-1 col-sm-1">
-            <span class="label {{#if dispatchTime}}{{#if finishTime}}label-success{{else}}label-info{{/if}}{{else}}label-default{{/if}}" style="width: 100%; font-size: larger; margin-bottom: 3px; display: block;">{{reference}} </span>
-            <button class="btn btn-sm btn-default btn-block toggle-edit btn-slim"><i class="fa fa-edit"></i> Edit</button>
-            <a href="{{pathFor 'showIntervention'}}" class="btn btn-sm btn-default btn-block toggle-edit btn-slim"><i class="fa fa-info-circle"></i> View</a>
-          </div>
-          <div class="col-lg-2 col-md-1 col-sm-1">
-            {{#if userSessionEquals 'editing' _id}}
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-              <input type="time" class="form-control update-on-blur" value="{{dispatchTime}}" name="dispatchTime" data-full-value="{{ dispatchDateTime }}">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            {{>optionButtons}}
+            <div class="row">
+              <div class="col-lg-1 col-md-1 col-sm-1">
+                <a href="#intervention-{{_id}}" data-toggle="collapse" class="btn btn-default toggle-collapse" data-parent="#accordion">
+                  # {{ reference }}
+                </a>
+              </div>
+              <div class="col-lg-2 col-md-1 col-sm-1">
+                <i class="fa fa-clock-o"></i> {{#if dispatchTime}} {{dispatchTime}} {{else}} <small>Not Dispatched</small> {{/if}}
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <div><i class="fa fa-map-marker"></i> {{locationDescription}}</div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <div><i class="fa fa-info-circle"></i> {{dispatchDescription}}</div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <div><i class="fa fa-user"></i> {{ownerUser.profile.firstName}} {{ownerUser.profile.lastName}}</div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <i class="fa fa-clock-o fa-flip-horizontal"></i> {{finishDateTimeMoment}}
+              </div>
             </div>
-            {{else}}
-            <i class="fa fa-clock-o"></i> {{#if dispatchTime}} {{dispatchTime}} {{else}} <small>Not Dispatched</small> {{/if}}
-            {{/if}}
-          </div>
-          <div class="col-lg-2 col-md-2 col-sm-2">
-            {{#if userSessionEquals 'editing' _id}}
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <input type="text" class="form-control update-on-blur" placeholder="Location" value="{{locationDescription}}" name="locationDescription">
-            </div>
-            {{else}}
-            <div><i class="fa fa-map-marker"></i> {{locationDescription}}</div>
-            {{/if}}
-          </div>
-          <div class="col-lg-2 col-md-2 col-sm-2">
-            {{#if userSessionEquals 'editing' _id}}
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
-              <input type="text" class="form-control update-on-blur" placeholder="Description" value="{{dispatchDescription}}" name="dispatchDescription">
-            </div>
-            {{else}}
-            <div><i class="fa fa-info-circle"></i> {{dispatchDescription}}</div>
-            {{/if}}
-          </div>
-          <div class="col-lg-2 col-md-2 col-sm-2">
-            {{#if userSessionEquals 'editing' _id}}
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              <select class="x-chosen-select form-control update-on-change" name="ownerEmail">
-                <option disabled>Team Member...</option>
-                {{#each users}}
-                <option value="{{userEmail this}}" {{selectedIfOwner}}>{{fullName}}</option>
-                {{/each}}
-              </select>
-            </div>
-            {{else}}
-            <div><i class="fa fa-user"></i> {{ownerUser.profile.firstName}} {{ownerUser.profile.lastName}}</div>
-            {{/if}}
-          </div>
-          <div class="col-lg-2 col-md-2 col-sm-2">
-            {{#if userSessionEquals 'editing' _id}}
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-clock-o fa-flip-horizontal"></i></span>
-              <select class="form-control update-on-change" name="durationHours">
-                <option disabled>Hours</option>
-                <option value="0" {{isSelected}}>0 Hrs</option>
-                <option value="1" {{isSelected}}>1 Hrs</option>
-                <option value="2" {{isSelected}}>2 Hrs</option>
-                <option value="4" {{isSelected}}>3 Hrs</option>
-                <option value="5" {{isSelected}}>4 Hrs</option>
-                <option value="6" {{isSelected}}>5 Hrs</option>
-              </select>
-              <select class="form-control update-on-change" name="durationHours">
-                <option disabled>Minutes</option>
-                <option value="0">0 Mins</option>
-                <option value="15">15 Mins</option>
-              </select>
-            </div>
-            {{else}}
-            <i class="fa fa-clock-o fa-flip-horizontal"></i> {{finishDateTimeMoment}}
-            {{/if}}
-          </div>
-          <div class="col-lg-1 col-md-1 col-sm-1">
-            <div>
-              <button class="btn btn-sm btn-warning clear-intervention btn-block btn-slim"><i class="fa fa-ban"></i> Clear </button>
-              <button class="btn btn-sm btn-danger remove-intervention btn-block btn-slim"><i class="fa fa-times"></i> Remove</button>
+          </h4>
+        </div>
+        <div id="intervention-{{_id}}" class="panel-collapse collapse{{#if userSessionEquals 'editing' _id}} in{{/if}}">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="panel panel-default">
+                  <div class="form-group">
+                    <label class="control-label" for="dispatch-time-{{_id_}}">
+                      <i class="fa fa-clock-o"></i> Dispatch Time
+                    </label>
+                    <input id="dispatch-time-{{_id_}}" type="time" class="form-control update-on-blur" value="{{dispatchTime}}" name="dispatchTime" data-full-value="{{ dispatchDateTime }}">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="panel panel-default">
+                  <div class="form-group">
+                    <label class="control-label" for="location-description-{{_id_}}">
+                      <i class="fa fa-map-marker"></i> Location
+                    </label>
+                    <input id="location-description-{{_id_}}" type="text" class="form-control update-on-blur" placeholder="Location" value="{{locationDescription}}" name="locationDescription">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="dispatch-description-{{_id_}}">
+                      <i class="fa fa-info-circle"></i> Dispatch Description
+                    </label>
+                    <input id="dispatch-description-{{_id_}}" type="text" class="form-control update-on-blur" placeholder="Description" value="{{dispatchDescription}}" name="dispatchDescription">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="panel panel-default">
+                  <div class="form-group">
+                    <label class="control-label" for="team-member-{{_id_}}">
+                      <i class="fa fa-user"></i> Team Member
+                    </label>
+                    <select id="team-member-{{_id_}}" class="form-control update-on-change" name="ownerEmail">
+                      <option disabled>Team Member...</option>
+                      {{#each users}}
+                      <option value="{{userEmail this}}" {{selectedIfOwner}}>{{fullName}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="panel panel-default">
+                  <div class="form-group">
+                    <label class="control-label" for="duration-{{_id}}">
+                      <i class="fa fa-clock-o"></i> Duration
+                    </label>
+                    <select id="duration-{{_id}}" class="form-control update-on-change" name="durationHours">
+                      <option disabled>Hours</option>
+                      <option value="0" {{isSelected}}>0 Hrs</option>
+                      <option value="1" {{isSelected}}>1 Hrs</option>
+                      <option value="2" {{isSelected}}>2 Hrs</option>
+                      <option value="4" {{isSelected}}>3 Hrs</option>
+                      <option value="5" {{isSelected}}>4 Hrs</option>
+                      <option value="6" {{isSelected}}>5 Hrs</option>
+                    </select>
+                    <select class="form-control update-on-change" name="durationHours">
+                      <option disabled>Minutes</option>
+                      <option value="0">0 Mins</option>
+                      <option value="15">15 Mins</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </li>
+      </div>
       {{/each}}
-      </ul>
     </div>
-    <div class="panel-footer">
-    </div>
-  </div>
+  </section>
 </template>

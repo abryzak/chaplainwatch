@@ -7,7 +7,7 @@ Template.response.events({
     updateDocument = 'update' + _.str.titleize( this.documentCollection );
     Meteor.call( updateDocument , this.documentId, values, function(error, id) {
       if ( error ) {
-        alert(error.reason);
+        Alerts.add(error.reason);
       } else {
       }
     });
@@ -35,7 +35,7 @@ Template.response.events({
     updateDocument = 'update' + _.str.titleize( this.documentCollection );
     Meteor.call( updateDocument , this.documentId, values, function(error, id) {
       if ( error ) {
-        alert(error.reason);
+        Alerts.add(error.reason);
       } else {
       }
     });
@@ -49,7 +49,7 @@ Template.response.events({
     updateDocument = 'update' + _.str.titleize( this.$parent.documentCollection );
     Meteor.call( updateDocument , this.$parent.documentId, values, function(error, id) {
       if ( error ) {
-        alert(error.reason);
+        Alerts.add(error.reason);
       } else {
       }
     });
@@ -66,7 +66,7 @@ Template.response.events({
     updateDocument = 'update' + _.str.titleize( this.$parent.documentCollection );
     Meteor.call( updateDocument , this.$parent.documentId, values, function(error, id) {
       if ( error ) {
-        alert(error.reason);
+        Alerts.add(error.reason);
       } else {
       }
     });
@@ -83,7 +83,7 @@ Template.response.events({
         updateDocument = 'update' + _.str.titleize( this.documentCollection );
         Meteor.call( updateDocument , documentId, updatedValues, function(error, id) {
           if ( error ) {
-            alert(error.reason);
+            Alerts.add(error.reason);
           } else {
           }
         });
@@ -94,7 +94,7 @@ Template.response.events({
           updateDocument = 'update' + _.str.titleize( this.documentCollection );
           Meteor.call( updateDocument , documentId, updatedValues, function(error, id) {
             if ( error ) {
-              alert(error.reason);
+              Alerts.add(error.reason);
             } else {
             }
           });
@@ -113,7 +113,7 @@ Template.response.events({
     updateDocument = 'update' + _.str.titleize( this.documentCollection );
     Meteor.call( updateDocument , this.documentId, values, function(error, id) {
       if ( error ) {
-        alert(error.reason);
+        Alerts.add(error.reason);
       } else {
         Router.go('viewIntervention', {_id: id});
       }

@@ -1,6 +1,12 @@
 /* CSS declarations go here */
 body { padding-top: 70px; }
 
+.alert-dynamic {
+  position: fixed;
+  top: 70px;
+  right: 10px;
+  z-index: 1000;
+}
 
 .spacer {
   margin-bottom: 7px; 

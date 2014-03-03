@@ -66,7 +66,7 @@ Interventions = new Meteor.Collection("interventions", {
     },
   }
 });
-
+/*
 Meteor.methods({
   addIntervention: function(options) {
     var self = this;
@@ -121,3 +121,4 @@ Meteor.methods({
     return true;
   },
 });
+*/

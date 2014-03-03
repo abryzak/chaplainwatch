@@ -18,6 +18,7 @@
     "chosen-package": {},
     "moment-timezone": {},
     "highcharts-with-exporting": {},
-    "collection2": {}
+    "collection2": {},
+    "bootstrap-alerts": {}
   }
 }

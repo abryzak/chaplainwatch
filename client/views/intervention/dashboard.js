@@ -1,7 +1,7 @@
 Template.dashboard.users = function() {
   var users = Meteor.users.find().fetch();
   var self = this; 
-  console.log(self);
+  //console.log(self);
   _.each(users, function(user, index, list) {
     user.email = user.emails[0].address;
     user.selectedIfOwner = function() {
@@ -17,6 +17,19 @@ Template.dashboard.users = function() {
   return users;
 };
 
+Template.dashboard.rendered = function() {
+  $('#accordion').on('hide.bs.collapse', function ( event ) {
+    $parentElement = $(event.target.parentElement);
+    $parentElement.removeClass('panel-info');
+    $parentElement.addClass('panel-default');
+  });
+  $('#accordion').on('show.bs.collapse', function ( event ) {
+    $parentElement = $(event.target.parentElement);
+    $parentElement.removeClass('panel-default');
+    $parentElement.addClass('panel-info');
+  });
+}
+
 Template.dashboard.events({
   'click #add-intervention': function(e) {
     e.preventDefault;
@@ -27,43 +40,11 @@ Template.dashboard.events({
       },
       function(error, id) {
       if (error) {
-        alert(error);
+        Alerts.add(error.reason);
       } else {
-        UserSession.set('editing', id);
+        Alerts.add('New Intervention created.', 'success');
       }
     });
-  },
-  'click .clear-intervention': function(e) {
-    e.preventDefault;
-    newInterventionId = Meteor.call(
-      'clearIntervention', this._id, {}, function(error, id) {
-      if (error) {
-        alert(error);
-      } else {
-        //
-      }
-    });
-  },
-  'click .remove-intervention': function(e) {
-    e.preventDefault;
-    if (window.confirm('Are you sure you want to remove this Intervention, there is no undo.')) {
-      completed = Meteor.call(
-        'removeIntervention', this._id, {}, function(error, id) {
-        if (error) {
-          alert(error);
-        } else {
-          //
-        }
-      });
-    }
-  },
-  'click .toggle-edit': function(e) {
-    e.preventDefault;
-    if ( UserSession.get('editing') == this._id ) {
-      UserSession.delete('editing');
-    } else {
-      UserSession.set('editing', this._id);
-    }
   },
   'blur .update-on-blur': function(e) {
     var updatedValue = event.currentTarget.value;
@@ -81,7 +62,7 @@ Template.dashboard.events({
     //console.log('documentId', documentId);
     Meteor.call('updateIntervention', this._id, values, function(error, id) {
       if ( error ) {
-        alert(error.reason);
+        Alerts.add(error.reason);
       } else {
       }
     });
@@ -98,7 +79,7 @@ Template.dashboard.events({
     }
     Meteor.call('updateIntervention', this._id, values, function(error, id) {
       if ( error ) {
-        alert(error.reason);
+        Alerts.add(error.reason);
       } else {
       }
     });

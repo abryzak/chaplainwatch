@@ -1,10 +1,12 @@
 var allUsers = Meteor.users.find();
 
 if (Interventions.find().count() == 0) {
-
+  //setCounter('interventionReference', 3005);
+  //console.log('next', incrementCounter('interventionReference') );
+  //Counter stuff is not working???
   var addedInterventions = [];
   var addedPeople = [];
-  _.each(oneImport.interventions, function(intervention, index, list) {
+  _.each([]/*oneImport.interventions*/, function(intervention, index, list) {
     var people = intervention.people;
     intervention.people = null;
     intervention.completedOn = new moment(intervention.finishOld).format();
@@ -21,7 +23,6 @@ if (Interventions.find().count() == 0) {
 
   //OLD DATA CReaTION
   //Set the first counter var
-  setCounter('interventionReference', 1983);
   [].forEach( function (user) {
     var interventionId = Meteor.call('addIntervention');
     Meteor.call('updateIntervention', interventionId, {

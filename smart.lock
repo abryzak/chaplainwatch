@@ -22,7 +22,7 @@
         "version": "0.0.15"
       },
       "reactive-table": {
-        "version": "0.1.1"
+        "version": "0.1.9"
       },
       "handlebar-helpers": {
         "version": "0.0.9"
@@ -31,7 +31,7 @@
         "version": "1.2.6"
       },
       "accounts-entry": {
-        "version": "0.5.3"
+        "version": "0.6.1"
       },
       "user-session": {
         "version": "0.2.0"
@@ -49,7 +49,10 @@
         "version": "0.1.1"
       },
       "collection2": {
-        "version": "0.3.7"
+        "version": "0.3.8"
+      },
+      "bootstrap-alerts": {
+        "version": "0.0.5"
       }
     },
     "packages": {
@@ -71,7 +74,7 @@
       "houston": {
         "git": "https://github.com/gterrono/houston.git",
         "branch": "master",
-        "commit": "1a5f69cdc7cb2761080c601e2f04275d05985737"
+        "commit": "e0e62b2ed2f99b89ed29af6aa313290e7ee55353"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
@@ -85,8 +88,8 @@
       },
       "reactive-table": {
         "git": "https://github.com/ecohealthalliance/reactive-table.git",
-        "tag": "v0.1.1",
-        "commit": "16f8dccf7dbf5727cd93111fc3680a8b9681e7f6"
+        "tag": "v0.1.9",
+        "commit": "df984ff7650cea74dc1d0694cd0c0a5b4b2ccbfb"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
@@ -100,8 +103,8 @@
       },
       "accounts-entry": {
         "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.5.3",
-        "commit": "20641be951a1a2e563cd2e6bf552f2cc8fe03984"
+        "tag": "v0.6.1",
+        "commit": "8e42d4abca33d6a00d236d198589fe4924729d09"
       },
       "user-session": {
         "git": "https://github.com/BenjaminRH/meteor-user-session.git",
@@ -130,8 +133,13 @@
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.3.7",
-        "commit": "4c6c2dfd87af8cda321c80e1baea72842ad5c542"
+        "tag": "v0.3.8",
+        "commit": "69aff2a21ba3c382f915e1f9dbcca2ad38edb6d5"
+      },
+      "bootstrap-alerts": {
+        "git": "https://github.com/asktomsk/bootstrap-alerts.git",
+        "tag": "v0.0.5",
+        "commit": "6ddd650208a77677ab86af9dfccc3a69b1ba8d32"
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
@@ -145,18 +153,23 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.2",
-        "commit": "ce56e58b45624dce992490f3a1c10f10d3948bae"
+        "tag": "v0.6.4",
+        "commit": "927bbaed1b87894fb6fb70807f74ff3a5bd89f29"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",
         "tag": "v0.1.1",
         "commit": "ce88ac66c0dc107dc2da93ce152616115838101f"
       },
+      "accounts-t9n": {
+        "git": "https://github.com/softwarerero/meteor-accounts-t9n.git",
+        "tag": "v0.0.2",
+        "commit": "408e3a037114cb72163073110e2121e3d548c1a2"
+      },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.2.37",
-        "commit": "4531fc43dea7bab04e4647e9820fa52631408909"
+        "tag": "v0.2.40",
+        "commit": "d22892daa943e3567916effeaafd794ca6af5cd2"
       }
     }
   }

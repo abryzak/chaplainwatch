@@ -1,0 +1,88 @@
+<template name="notUsed">
+  <div class="list-group">
+    {{#each interventions}}
+    <a class="list-group-item{{#if userSessionEquals 'editing' _id}} active{{/if}}" style="padding-bottom:8px;">
+      <div class="panel panel-default">
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1">
+            <span class="label {{#if dispatchTime}}{{#if finishTime}}label-success{{else}}label-info{{/if}}{{else}}label-default{{/if}}" style="width: 100%; font-size: larger; margin-bottom: 3px; display: block;">{{reference}} </span>
+            {{>optionButtons}}
+            <!--
+            <button class="btn btn-sm btn-default btn-block toggle-edit btn-slim"><i class="fa fa-edit"></i> Edit</button>
+            <a href="{{pathFor 'viewIntervention'}}" class="btn btn-sm btn-default btn-block toggle-edit btn-slim"><i class="fa fa-info-circle"></i> View</a>
+            -->
+          </div>
+          <div class="col-lg-2 col-md-1 col-sm-1">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+              <input type="time" class="form-control update-on-blur" value="{{dispatchTime}}" name="dispatchTime" data-full-value="{{ dispatchDateTime }}">
+            </div>
+            {{else}}
+            <i class="fa fa-clock-o"></i> {{#if dispatchTime}} {{dispatchTime}} {{else}} <small>Not Dispatched</small> {{/if}}
+            {{/if}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+              <input type="text" class="form-control update-on-blur" placeholder="Location" value="{{locationDescription}}" name="locationDescription">
+            </div>
+            {{else}}
+            <div><i class="fa fa-map-marker"></i> {{locationDescription}}</div>
+            {{/if}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+              <input type="text" class="form-control update-on-blur" placeholder="Description" value="{{dispatchDescription}}" name="dispatchDescription">
+            </div>
+            {{else}}
+            <div><i class="fa fa-info-circle"></i> {{dispatchDescription}}</div>
+            {{/if}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <select class="x-chosen-select form-control update-on-change" name="ownerEmail">
+                <option disabled>Team Member...</option>
+                {{#each users}}
+                <option value="{{userEmail this}}" {{selectedIfOwner}}>{{fullName}}</option>
+                {{/each}}
+              </select>
+            </div>
+            {{else}}
+            <div><i class="fa fa-user"></i> {{ownerUser.profile.firstName}} {{ownerUser.profile.lastName}}</div>
+            {{/if}}
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            {{#if userSessionEquals 'editing' _id}}
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon"><i class="fa fa-clock-o fa-flip-horizontal"></i></span>
+              <select class="form-control update-on-change" name="durationHours">
+                <option disabled>Hours</option>
+                <option value="0" {{isSelected}}>0 Hrs</option>
+                <option value="1" {{isSelected}}>1 Hrs</option>
+                <option value="2" {{isSelected}}>2 Hrs</option>
+                <option value="4" {{isSelected}}>3 Hrs</option>
+                <option value="5" {{isSelected}}>4 Hrs</option>
+                <option value="6" {{isSelected}}>5 Hrs</option>
+              </select>
+              <select class="form-control update-on-change" name="durationHours">
+                <option disabled>Minutes</option>
+                <option value="0">0 Mins</option>
+                <option value="15">15 Mins</option>
+              </select>
+            </div>
+            {{else}}
+            <i class="fa fa-clock-o fa-flip-horizontal"></i> {{finishDateTimeMoment}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </a>
+    {{/each}}
+  </div>
+</template>

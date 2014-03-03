@@ -11,6 +11,7 @@ Template.nav.events({
 			if (error) {
 				alert(error);
 			} else {
+				Alerts.add('New Intervention created.', 'success');
 				Router.go('editIntervention', {_id: id});
 			}
 		});

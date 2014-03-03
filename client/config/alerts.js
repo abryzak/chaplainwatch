@@ -1,0 +1,1 @@
+Alerts.defaultOptions.classes = 'alert-dynamic';
