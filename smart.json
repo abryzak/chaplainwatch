@@ -3,10 +3,7 @@
     "bootstrap-cyborg": {},
     "font-awesome": {},
     "underscore-string-latest": {},
-    "houston": {
-      "branch": "master",
-      "git": "https://github.com/gterrono/houston.git"
-    },
+    "houston": {},
     "moment": {},
     "headers": {},
     "reactive-table": {},

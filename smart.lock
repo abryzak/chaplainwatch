@@ -12,8 +12,7 @@
         "version": "2.3.3"
       },
       "houston": {
-        "git": "https://github.com/gterrono/houston.git",
-        "branch": "master"
+        "version": "1.0.1"
       },
       "moment": {
         "version": "2.5.1"
@@ -73,8 +72,8 @@
       },
       "houston": {
         "git": "https://github.com/gterrono/houston.git",
-        "branch": "master",
-        "commit": "e0e62b2ed2f99b89ed29af6aa313290e7ee55353"
+        "tag": "v1.0.1",
+        "commit": "59653d3a345a438c83bfd5244b992a19c4b014d7"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
