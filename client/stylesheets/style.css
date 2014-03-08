@@ -80,3 +80,7 @@ textarea {
   color: rgb(231, 231, 231);
   font-size: larger;
 }
+
+#accordion > .panel {
+  overflow: visible;
+}
