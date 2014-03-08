@@ -62,9 +62,11 @@
         {{#if $eq type 'multi-select'}}
           <ul class="list-group" id="{{ elementId }}">
             {{#each options}}{{#include $parent=..}}
-            <li class="list-group-item option update-selection-on-click {{#if $inList value $parent.value}}text-info{{else}}text-default{{/if}}">
-              <i class="fa fa-lg fa-fw {{#if $inList value $parent.value}}fa-check-square-o{{else}}fa-square-o{{/if}}"></i>
-              <span>{{{ html }}}</span>
+            <li class="list-group-item option {{#if $inList value $parent.value}}text-info{{else}}text-default{{/if}}">
+              <a href="#" class="update-selection-on-click">
+                <i class="fa fa-lg fa-fw {{#if $inList value $parent.value}}fa-check-square-o{{else}}fa-square-o{{/if}}"></i>
+                <span>{{{ html }}}</span>
+              </a>
             </li>
             {{/include}}{{/each}}
           </ul>

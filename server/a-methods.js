@@ -23,16 +23,6 @@ Meteor.methods({
     console.log('new intervention created', newInterventionId, options);
     return newInterventionId;
   },
-  updateIntervention: function(interventionId, values, options) {
-    var self = this;
-    console.log(interventionId, values, options);
-    var intervention = _.extend( new defaultFields( false ), values );
-    Interventions.update(
-      { _id: interventionId },
-      { $set: intervention }
-      );
-    return interventionId;
-  },
   clearIntervention: function(interventionId, options) {
     intervention = Interventions.findOne({_id: interventionId});
     clearedIntervention = {};

@@ -82,3 +82,8 @@ textarea {
 .fa-fw.fa-square-o {
   padding-right: 4px;
 }
+
+a.update-selection-on-click {
+  color: inherit;
+  text-decoration: none;
+}

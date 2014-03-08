@@ -1,21 +1,3 @@
-function fancyCheckboxClick( event ) {
-  var optionToToggle = this.value;
-  var updatedValue = optionToToggle;
-  if ( this.$parent.type == 'multi-select' ) {
-    updatedArray = toggleItemInArray(this.$parent.value, optionToToggle);
-    updatedValue = updatedArray;
-  }
-  var values = {};
-  values[this.responseName] = updatedValue;
-  updateDocument = 'update' + _.str.titleize( this.$parent.documentCollection );
-  Meteor.call( updateDocument , this.$parent.documentId, values, function(error, id) {
-    if ( error ) {
-      Alerts.add(error.reason);
-    } else {
-    }
-  });
-}
-
 Template.response.events({
   'blur .update-on-blur' : function( event ) {
     var updatedValue = event.currentTarget.value;
@@ -72,8 +54,23 @@ Template.response.events({
       }
     });
   },
-  'click .update-selection-on-click' : fancyCheckboxClick,
-  'tap .update-selection-on-click' : fancyCheckboxClick,
+  'click .update-selection-on-click' : function ( event ) {
+    var optionToToggle = this.value;
+    var updatedValue = optionToToggle;
+    if ( this.$parent.type == 'multi-select' ) {
+      updatedArray = toggleItemInArray(this.$parent.value, optionToToggle);
+      updatedValue = updatedArray;
+    }
+    var values = {};
+    values[this.responseName] = updatedValue;
+    var updateDocument = 'update' + _.str.titleize( this.$parent.documentCollection );
+    Meteor.call( updateDocument , this.$parent.documentId, values, function(error, id) {
+      if ( error ) {
+        Alerts.add(error.reason);
+      } else {
+      }
+    });
+  },
   'click .geolocation' : function( event ) {
     var updatedValues = {};
     var documentId = this.documentId;
