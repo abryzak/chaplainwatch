@@ -16,6 +16,7 @@
     "moment-timezone": {},
     "highcharts-with-exporting": {},
     "collection2": {},
-    "bootstrap-alerts": {}
+    "bootstrap-alerts": {},
+    "just-i18n": "0.1.1"
   }
 }
