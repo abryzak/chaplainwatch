@@ -77,13 +77,14 @@ Template.response.events({
   'click .geolocation' : function( event ) {
     var updatedValues = {};
     var documentId = this.documentId;
+    var documentCollection = this.documentCollection;
     navigator.geolocation.getCurrentPosition(
       function(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         updatedValues.locationCoordinates = [latitude, longitude];
         updatedValues.locationError = null;
-        updateDocument = 'update' + _.str.titleize( this.documentCollection );
+        updateDocument = 'update' + _.str.titleize( documentCollection );
         Meteor.call( updateDocument , documentId, updatedValues, function(error, id) {
           if ( error ) {
             Alerts.add(error.reason);
@@ -94,7 +95,7 @@ Template.response.events({
         function(error){
           updatedValues.locationCoordinates = error.message;
           updatedValues.locationError = error.message;
-          updateDocument = 'update' + _.str.titleize( this.documentCollection );
+          updateDocument = 'update' + _.str.titleize( documentCollection );
           Meteor.call( updateDocument , documentId, updatedValues, function(error, id) {
             if ( error ) {
               Alerts.add(error.reason);
