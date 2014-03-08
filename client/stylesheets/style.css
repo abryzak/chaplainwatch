@@ -64,12 +64,6 @@ textarea {
 }
 
 /* fix for slightly off icons */
-.fa-square-o {
-  margin-left: -1.5px;
-}
-.fa-check-square-o {
-  margin-right: -1.5px;
-}
 .form-label-icon {
   font-size: 75%;
   vertical-align: super;
@@ -83,4 +77,8 @@ textarea {
 
 #accordion > .panel {
   overflow: visible;
+}
+
+.fa-fw.fa-square-o {
+  padding-right: 4px;
 }
