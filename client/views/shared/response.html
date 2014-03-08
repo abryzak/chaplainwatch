@@ -74,9 +74,11 @@
         {{#if $eq type 'single-select'}}
           <ul class="list-group" id="{{ elementId }}">
             {{#each options}}{{#include $parent=..}}
-            <li class="list-group-item option update-selection-on-click {{#if $eq value $parent.value}}text-info{{else}}text-default{{#if $parent.isValid}} hidden{{/if}}{{/if}}">
-              <i class="fa fa-lg fa-fw {{#if $eq value $parent.value}}fa-bullseye{{else}}fa-circle-o{{/if}}"></i>
-              <span>{{{ html }}}</span>
+            <li class="list-group-item option {{#if $eq value $parent.value}}text-info{{else}}text-default{{#if $parent.isValid}} hidden{{/if}}{{/if}}">
+              <a href="#" class="update-selection-on-click">
+                <i class="fa fa-lg fa-fw {{#if $eq value $parent.value}}fa-bullseye{{else}}fa-circle-o{{/if}}"></i>
+                <span>{{{ html }}}</span>
+              </a>
             </li>
             {{/include}}{{/each}}
             {{#if isValid}}
